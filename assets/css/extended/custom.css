@@ -1,0 +1,5 @@
+.post-tags a:hover,
+.paginav a:hover {
+  background-color: var(--code-bg);
+  opacity: 80%;
+}
