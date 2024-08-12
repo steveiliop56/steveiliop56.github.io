@@ -48,6 +48,13 @@ params:
       - name: "Projects"
         url: projects
 
+  assets:
+    favicon: favicon.ico
+    favicon16x16: favicon-16x16.png
+    favicon32x32: favicon-32x32.png
+    apple_touch_icon: apple-touch-icon.png
+    safari_pinned_tab: apple-touch-icon.png
+
 languages:
   en:
     menu:
