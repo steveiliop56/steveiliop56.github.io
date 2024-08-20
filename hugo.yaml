@@ -25,6 +25,7 @@ params:
   disableScrollToTop: false
   ShowPostNavLinks: true
   showtoc: true
+  comments: true
 
   socialIcons:
     - name: "Github"
