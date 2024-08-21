@@ -4,7 +4,6 @@ title: Doesmycode.work
 theme: "PaperMod"
 
 enableRobotsTXT: true
-googleAnalytics: G-HGMVTNBVBY
 
 minify:
   disableXML: true
