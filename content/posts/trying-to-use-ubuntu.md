@@ -1,7 +1,7 @@
 +++
 title = 'Trying to use Ubuntu'
 date = 2024-08-24
-draft = true
+draft = false
 +++
 
 So, I've been using windows since the day I got my first laptop, why? Because I am loving it. But I am starting to see Microsoft changing things in a way I don't like. These changes don't affect me since I am using my windows laptop with a Microsoft account so I am avoiding all the bloat. However, that doesn't mean I believe that people actually paying 120 euro or more for a Windows key and still getting ADs in the operating system which they paid for isn't really nice. So, after my friends annoyed me for a while, I decided to try Ubuntu (once again). Let's see what happened...
