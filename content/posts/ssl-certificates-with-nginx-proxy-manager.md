@@ -18,10 +18,10 @@ In order to follow this tutorial you need the following things:
 
 Firstly we need to setup the DNS records of our domain to point to the IP address of our server. This is quite different for every domain registar so you will have to do a quick google search on how to add DNS records to your domain. After you find out how you need to add these 2 records:
 
-- `domain.com` pointing to `yourserverip` as an A record
-- `*.domain.com` pointing to `yourserverip` as an A record
+- `domain.com` pointing to `your-server-internal-ip` as an A record
+- `*.domain.com` pointing to `your-server-internal-ip` as an A record
 
-> Note 📝: If you don’t want to use the root of your domain, you can also do `somesubdomain.domain.com` and `*.somesubdomain.com`
+> Note 📝: If you don’t want to use the root of your domain, you can also do `somesubdomain.domain.com` and `*.somesubdomain.domain.com`
 
 ## Obtaining an API token
 
@@ -29,7 +29,7 @@ Now we need to get our API token, again this is different for every domain regis
 
 ## Setting up Nginx Proxy Manager
 
-Setting un Nginx Proxy Manager (which I will refer to as npm) is relatively easy since it is only a docker container. So make sure you have docker and docker compose installed on your server. When you are done create an `nginx-proxy-manager` directory and inside create a `data` directory, this folder will contain your npm data. Now create a `docker-compose.yml` file with the following contents:
+Setting un Nginx Proxy Manager (which I will refer to as npm) is relatively easy since it is only a docker container. So make sure you have docker and docker compose installed on your server. When you are done create an `nginx-proxy-manager` directory and inside create a `data` directory, this folder will contain your npm data. Now create a `docker-compose.yml` file with the following content:
 
 ```yaml
 services:
@@ -48,16 +48,16 @@ services:
 
 > Note 📝: I am using the `latest` image tag here which is not the best practice. I would recommend you visit the [Github](https://github.com/NginxProxyManager/nginx-proxy-manager) page and use the latest version as tag.
 
-Now you can simply do `docker compose up -d` and after a minute or so npm should be accessible on `http://yourmachinesip:81`. There you can login with `admin@example.com` and password `changeme` , after logging in you will be immediately prompted to change your password and set a new email address and name.
+Now you can simply do `docker compose up -d` and after a minute or so npm should be accessible on `http://yourmachinesip:81`. There you can login with `admin@example.com` and password `changeme`. After logging in you will be immediately prompted to change your password and set a new email address and name.
 
 ## Generating the SSL certificates
 
-Everything is now ready for us to generate our certificates, so spin up your npm dashboard and go to the SSL Certificates tab. There click the Add Certificate button and select Let’s Encrypt, in the menu that pops up add `domain.com` and `*.domain.com` in the Domain Names section (or a subdomain if you used that). After this fill in your email address and flip both the Use DNS Challenge and the I Agree to the Let’s Encrypt Terms of Service switches. When you flip them an extra menu will appear prompting you to chose your domain registar, after you select your option, a textbox will appear where you should fill in your API token (your email address may be required too for some providers). When you are done click Save and then npm will start generating the certificates, there is a chance it fails the first time but don’t worry just click Save again and it should generate them. When it’s done a new entry should appear in the SSL Certificates table with your domain and that’s it your certificates are now generated.
+Everything is now ready for us to generate our certificates, so spin up your npm dashboard and go to the SSL Certificates tab. There click the Add Certificate button and select Let’s Encrypt. In the menu that pops up add `domain.com` and `*.domain.com` in the Domain Names section (or a subdomain if you used that). After this fill in your email address and flip both the Use DNS Challenge and the I Agree to the Let’s Encrypt Terms of Service switches. When you flip them an extra menu will appear prompting you to chose your domain registar. After you select your option, a textbox will appear where you should fill in your API token (your email address may be required too for some providers). When you are done click Save and then npm will start generating the certificates, there is a chance it fails the first time but don’t worry, just click Save again and it should generate them. When it’s done a new entry should appear in the SSL Certificates table with your domain and that’s it, your certificates are now generated!
 
 ## Adding your first service
 
-Adding services is really easy, just click the Hosts button and select Proxy Hosts from the drop down menu. There click Add Proxy Host and a menu should appear, in this menu firstly add your service’s domain (for example `myservice.domain.com`), for Scheme select whatever your service is using, for example Portainer uses SSL on port 9443 so if you use that make sure to select https in the scheme, now fill in the IP address and port where your service is hosted, finally flip the Websockets Support switch (a lot of apps use websockets for communication so if you don’t enable this you may face issues with some apps). For the SSL part go to the SSL tab, select the certificate we just generated from the drop down menu and if you want to only access the app with https flip the Force SSL switch. Finally click Save and that’s it! When you go to `myservice.domain.com` your browser should say it is secure and have the lock icon.
+Adding services is really easy, just click the Hosts button and select Proxy Hosts from the drop down menu. There click Add Proxy Host and a menu should appear, in this menu firstly add your service’s domain (for example `myservice.domain.com`), for Scheme select whatever your service is using, for example Portainer uses SSL on port 9443, so if you use that make sure to select https in the scheme. Now fill in the IP address and port where your service is hosted. Finally flip the Websockets Support switch (a lot of apps use websockets for communication so if you don’t enable this you may face issues with some apps). For the SSL part go to the SSL tab, select the certificate we just generated from the drop down menu and if you want to only access the app with https flip the Force SSL switch. Last but not least, click Save and that’s it! When you go to `myservice.domain.com` your browser should say it is secure and have the lock icon.
 
 ## Conclusion
 
-All in all generating certificates with npm it really easy and I believe that a lot of people aren’t using it thinking it’s complex but with apps like this SSL has became easy and it should protect all of your services. Another reason people aren’t using SSL is because they think they need to buy a domain but in reality you can just use DuckDNS and get your own free subdomain. That’s it for now, see ya!
+All in all generating certificates with npm it really easy and I believe that a lot of people aren’t using it thinking it’s complex but with apps like npm, SSL has became easy. Another reason people aren’t using SSL is because they think they need to buy a domain but in reality you can just use DuckDNS and get your own free subdomain. That’s it for now, see ya!
