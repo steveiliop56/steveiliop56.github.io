@@ -17,10 +17,10 @@ As far as the `config.txt` file goes we only need to do some small changes to en
 ```
 # Hyperpixel
 dtoverlay=vc4-kms-dpi-hyperpixel4
-dtparam=rotate=90,touchscreen-swapped-x-y,touchscreen-inverted-y
+dtparam=rotate=90
 ```
 
-This basically loads the Hyperpixel kernel overlay and rotates the screen 90 degrees, in a landscape configuration (meaning that the USB-C and HDMI ports will be on the top side and the USB ports on the left) and also inverts the touch to work with the rotation. After you edit your config save and exit then reboot. When the Pi boots up again you should see the desktop in a portrait configuration (meaning that the USB-C and HDMI ports are on the right and the USB ports on the top) but don’t worry we will fix that now.
+This basically loads the Hyperpixel kernel overlay and rotates the screen 90 degrees, in a landscape configuration (meaning that the USB-C and HDMI ports will be on the top side and the USB ports on the left). After you edit your config save and exit then reboot. When the Pi boots up again you should see the desktop in a portrait configuration (meaning that the USB-C and HDMI ports are on the right and the USB ports on the top) but don’t worry we will fix that now.
 
 ## Rotating the screen correctly
 
@@ -38,15 +38,11 @@ Touchscreen: `11-005d Goodix Capacitive TouchScreen` (you may not have the exact
 
 Brightness: `100%` (should be the default one)
 
-When you are done click Apply, the screen should rotate and then the Screen Configuration tool will show you a small popup with a countdown asking you to click OK if everything is good, there just click OK.
+When you are done click Apply, the screen should rotate along with the touch and the Screen Configuration tool will show you a small popup with a countdown asking you to click OK if everything is good, there just click OK.
 
 > Note 📝: If you are using VNC your cursor will get inverted when you click apply so you will have to close the connection and reconnect and then you can click OK in the popup.
 
-And we are almost done, you may notice that your touch got messed up so let’s fix that.
-
-## Fixing the touch
-
-When rotating the screen you may notice that your touch got inverted and that’s because our new configuration messes up the `dtparam` options we set earlier resulting in the touch being inverted, this can be easily fixed by telling labwc not to map the touch to the screen. To do this, edit the `.config/labwc/rc.xml` file (in your home directory) and go to the end of the file until you see `<touch deviceName="11-005d Goodix Capacitive TouchScreen" mapToOutput="DPI-1" mouseEmulation="yes"/>` there just remove the `mapToOutput="DPI-1"` part and then save and exit. When you are done editing the file, either logout and log back in or reboot. When your desktop reappears, your touch should be working correctly and the cursor should be moving along with your finger.
+And we are almost done.
 
 ## Enabling the on-screen keyboard
 
