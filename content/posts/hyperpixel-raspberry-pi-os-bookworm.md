@@ -50,7 +50,7 @@ Chances are that you want to have an on-screen keyboard if using a touchscreen, 
 
 ## Screen blanking
 
-I have tried countless times to set up screen blanking with wayfire and labwc and it has been a pain. I have gone in depth in my blog post [here](https://doesmycode.work/posts/screen-blanking-labwc/) but to sum up you just need to follow two simple steps to get it working. Firstly install this little tool called `brightnessctl` which will help you turn on and off the screen backlight. You can install it with `sudo apt update && sudo apt install brightnessctl -y` . When you are done go to the Raspberry Pi Configuration tool (located in the Preferences menu), then Display and enable screen blanking, then click Ok and it will ask you to reboot but click No because we need to change one small thing. We simply need to edit the `.config/labwc/autostart` file (in your home directory) with `sudo` and replace the contents with `swayidle -w timeout 600 'wlopm --off \* && brightnessctl -d \* -q set 0' resume 'wlopm --on \* && brightnessctl -d \* -q set 100' &`, this will ensure both the DPI displays and the HDMI displays will go black after 10 minutes and they will both wake when you move your mouse or touch the screen.
+As of 31/10/2024 we managed to identify and solve the issue in the wayvnc server which would control the display's power state at all times meaning that `wlopm` wouldn't work. This is now fixed and a new wayvnc package is probably released as an update, meaning that the only step you have to do to enable screen blanking is update your system and then just turn on the setting in the Raspberry Pi Configuration tool and everything should work.
 
 ## That’s it!
 
