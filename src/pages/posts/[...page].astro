@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import PostCard from "../../components/PostCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Pagination from "../../components/Pagination.astro";
+import type { Page } from "astro";
+
+export async function getStaticPaths({ paginate }: { paginate: Function }) {
+  const posts = (await getCollection("posts")).sort(
+    (a, b) => Date.parse(b.data.publishedOn) - Date.parse(a.data.publishedOn),
+  );
+
+  return paginate(posts, { pageSize: 2 });
+}
+
+const { page }: { page: Page } = Astro.props;
+---
+
+<BaseLayout title="Posts">
+  <div class="flex flex-col items-center justify-center p-5 flex-1">
+    <div class="flex flex-col justify-between gap-8">
+      <p class="font-bold text-4xl">Posts</p>
+      <div class="flex flex-col gap-3">
+        {page.data.map((post) => <PostCard post={post} />)}
+      </div>
+      <Pagination page={page} />
+    </div>
+  </div>
+</BaseLayout>

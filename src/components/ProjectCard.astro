@@ -1,0 +1,21 @@
+---
+const { title, description, image, link } = Astro.props;
+---
+
+<a aria-label={title} href={link}>
+  <div
+    class="flex flex-row gap-5 hover:opacity-80 max-w-md justify-center items-center"
+  >
+    <div class="min-w-20 min-h-20">
+      <img
+        src={image}
+        alt={`${title} logo`}
+        class="rounded max-w-20 max-h-20 drop-shadow-lg"
+      />
+    </div>
+    <div class="flex flex-col gap-1 justify-center">
+      <p class="font-bold text-lg">{title}</p>
+      <p class="text-base text-zinc-700 dark:text-zinc-400">{description}</p>
+    </div>
+  </div>
+</a>

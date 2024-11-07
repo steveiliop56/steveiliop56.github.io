@@ -1,0 +1,54 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Home">
+  <div class="flex flex-col gap-5 flex-1 items-center justify-center p-5">
+    <img
+      src="https://avatars.githubusercontent.com/u/106091011?v=4"
+      alt="Profile Image"
+      class="size-48 rounded-full"
+    />
+    <div class="flex flex-col gap-3 items-center justify-center">
+      <p class="text-3xl text-zinc-900 dark:text-zinc-200 font-bold">
+        Doesmycode.work
+      </p>
+      <p class="text-2xl text-zinc-600 dark:text-zinc-500 font-medium italic">
+        @steveiliop56
+      </p>
+    </div>
+    <div class="flex flex-row gap-3">
+      <a href="https://github.com/steveiliop56" aria-label="Github">
+        <Icon
+          name="tabler:brand-github"
+          class="font-medium text-zinc-900 dark:text-zinc-200 size-8 hover:opacity-80"
+        />
+      </a>
+      <a href="mailto:steve@doesmycode.work" aria-label="Email">
+        <Icon
+          name="tabler:mail"
+          class="font-medium text-zinc-900 dark:text-zinc-200 size-8 hover:opacity-80"
+        />
+      </a>
+      <a href="/rss.xml" aria-label="RSS">
+        <Icon
+          name="tabler:rss"
+          class="font-medium text-zinc-900 dark:text-zinc-200 size-8 hover:opacity-80"
+        />
+      </a>
+    </div>
+    <div class="flex flex-row gap-3">
+      <a
+        href="/posts"
+        class="px-3 py-2 rounded-xl bg-zinc-300 dark:bg-zinc-800 hover:opacity-80 text-lg"
+        >Posts</a
+      >
+      <a
+        href="/projects"
+        class="px-3 py-2 rounded-xl bg-zinc-300 dark:bg-zinc-800 hover:opacity-80 text-lg"
+        >Projects</a
+      >
+    </div>
+  </div>
+</BaseLayout>

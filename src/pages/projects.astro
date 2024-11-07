@@ -1,0 +1,57 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const projects = [
+  {
+    title: "Runtipi",
+    description:
+      "Runtipi is a homeserver for everyone! One command setup, one click installs for your favorites self-hosted apps.",
+    link: "https://github.com/runtipi/runtipi",
+    image:
+      "https://github.com/runtipi/runtipi/blob/develop/public/tipi.png?raw=true",
+  },
+  {
+    title: "GetAShell",
+    description: "Quickly spin up ssh shells from a dead simple UI.",
+    link: "https://github.com/steveiliop56/getashell",
+    image:
+      "https://github.com/steveiliop56/getashell/blob/main/public/logo.png?raw=true",
+  },
+  {
+    title: "Presency",
+    description:
+      "The easiest way to customize your Discord Rich Presence status.",
+    link: "https://github.com/steveiliop56/presency",
+    image:
+      "https://github.com/steveiliop56/presency/blob/main/build/appicon.png?raw=true",
+  },
+  {
+    title: "PyDucky",
+    description:
+      "A simple Python scripts that gets you up and running with pico-ducky fast and easy.",
+    link: "https://github.com/steveiliop56/pyducky",
+    image:
+      "https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png",
+  },
+  {
+    title: "PyOS",
+    description:
+      'A Linux-like "operating system" written in Python and of course... it is better than windows!',
+    link: "https://github.com/steveiliop56/PyOS",
+    image: "https://github.com/steveiliop56/PyOS/raw/main/logo.png",
+  },
+];
+---
+
+<BaseLayout title="Projects">
+  <div class="flex flex-col justify-center items-center flex-1 p-5">
+    <div class="flex flex-col gap-6 items-stretch">
+      <p class="text-4xl font-bold">Projects</p>
+      <p>Here are my favorite projects that I have built/worked on:</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {projects.map((project) => <ProjectCard {...project} />)}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

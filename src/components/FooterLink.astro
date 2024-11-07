@@ -1,0 +1,13 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { icon, link, title } = Astro.props;
+---
+
+<a href={link}>
+  <div
+    class="flex items-center justify-center p-2 rounded-full bg-zinc-300 dark:bg-zinc-800"
+  >
+    <Icon name={icon} aria-label={title} class="w-5 h-5" />
+  </div>
+</a>

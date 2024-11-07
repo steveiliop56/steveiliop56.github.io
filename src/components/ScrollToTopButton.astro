@@ -1,0 +1,42 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const scrollToTop = document.getElementById("scrollToTop");
+
+    window.onscroll = function () {
+      handleScroll();
+    };
+
+    function handleScroll() {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        scrollToTop?.classList.remove("hidden");
+      } else {
+        scrollToTop?.classList.add("hidden");
+      }
+    }
+
+    function backToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(() => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }, 500);
+    }
+
+    scrollToTop?.addEventListener("click", backToTop);
+  });
+</script>
+
+<button
+  class="hidden rounded-full bg-zinc-300 dark:bg-zinc-800 p-4 fixed bottom-5 right-5"
+  id="scrollToTop"
+  aria-label="Scroll to top"
+>
+  <Icon name="tabler:caret-up-filled" />
+</button>

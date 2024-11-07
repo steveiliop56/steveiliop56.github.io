@@ -1,0 +1,77 @@
+---
+import BaseHeader from "../components/BaseHeader.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { ViewTransitions } from "astro:transitions";
+
+const { title } = Astro.props;
+---
+
+<script is:inline>
+  function applyTheme() {
+    const theme = (() => {
+      if (
+        typeof localStorage !== "undefined" &&
+        localStorage.getItem("theme")
+      ) {
+        return localStorage.getItem("theme");
+      }
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+      }
+      return "light";
+    })();
+
+    if (theme === "light") {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
+  }
+
+  document.addEventListener("astro:after-swap", applyTheme);
+  applyTheme();
+</script>
+
+<html lang="en">
+  <head>
+    <BaseHeader title={title} />
+    <Header />
+    <ViewTransitions />
+  </head>
+  <body
+    class="bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200 min-h-screen flex flex-col justify-between"
+  >
+    <slot />
+  </body><footer>
+    <Footer />
+  </footer>
+</html>
+
+<style>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  body::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+    @apply bg-zinc-300;
+  }
+  body::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-400;
+  }
+  .dark body::-webkit-scrollbar-thumb {
+    @apply bg-zinc-700;
+  }
+  .dark body::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-800;
+  }
+
+  body::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  body::-webkit-scrollbar {
+    @apply w-2;
+    @apply h-2;
+  }
+</style>
