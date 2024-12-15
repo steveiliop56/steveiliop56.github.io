@@ -23,8 +23,10 @@ const { title } = Astro.props;
     })();
 
     if (theme === "light") {
+      document.documentElement.style.colorScheme = "light";
       document.documentElement.classList.remove("dark");
     } else {
+      document.documentElement.style.colorScheme = "dark";
       document.documentElement.classList.add("dark");
     }
   }
