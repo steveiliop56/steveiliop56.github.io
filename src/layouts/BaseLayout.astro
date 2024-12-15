@@ -47,31 +47,3 @@ const { title } = Astro.props;
     <Footer />
   </footer>
 </html>
-
-<style>
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-
-  body::-webkit-scrollbar-thumb {
-    @apply rounded-full;
-    @apply bg-zinc-300;
-  }
-  body::-webkit-scrollbar-thumb:hover {
-    @apply bg-zinc-400;
-  }
-  .dark body::-webkit-scrollbar-thumb {
-    @apply bg-zinc-700;
-  }
-  .dark body::-webkit-scrollbar-thumb:hover {
-    @apply bg-zinc-800;
-  }
-
-  body::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-  body::-webkit-scrollbar {
-    @apply w-2;
-    @apply h-2;
-  }
-</style>
