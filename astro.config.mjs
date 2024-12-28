@@ -7,7 +7,12 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://doesmycodework.com",
+  site: "https://doesmycode.work",
   base: "/",
   integrations: [tailwind(), icon()],
+  markdown: {
+    shikiConfig: {
+      theme: "one-dark-pro"
+    }
+  }
 });
