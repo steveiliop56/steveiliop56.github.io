@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ScrollToTopButton from "../../components/ScrollToTopButton.astro";
 import Comments from "../../components/Comments.astro";
+import Toc from "../../components/Toc.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("posts")).sort(
@@ -43,20 +44,7 @@ const readTime = Math.round(words / 200);
           )
         }
       </div>
-      {
-        headings.length > 1 && (
-          <details class="rounded-md p-3 bg-zinc-100 dark:bg-zinc-800">
-            <summary class="font-medium text-xl">Table of Contents</summary>
-            <ul class="flex flex-col list-disc px-5 mt-2 text-zinc-800 dark:text-zinc-200">
-              {headings.map((heading) => (
-                <li class="text-lg hover:opacity-80">
-                  <a href={`#${heading.slug}`}>{heading.text}</a>
-                </li>
-              ))}
-            </ul>
-          </details>
-        )
-      }
+      <Toc headings={headings} />
       <article
         class="break-words prose-code:break-all max-w-4xl prose prose-zinc prose-pre:overflow-x-auto prose-pre:max-w-xs md:prose-pre:max-w-4xl prose-headings:text-3xl prose-headings:text-zinc-800 dark:prose-headings:text-zinc-200 prose-li:text-zinc-800 dark:prose-li:text-zinc-200 prose-ul:text-zinc-800 dark:prose-ul:text-zinc-200 prose-p:text-zinc-800 dark:prose-p:text-zinc-200 prose-blockquote:not-italic dark:prose-invert"
       >
