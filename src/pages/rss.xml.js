@@ -16,5 +16,6 @@ export async function GET(context) {
       link: `/posts/${post.slug}/`,
     })),
     customData: `<language>en-us</language>`,
+    stylesheet: "/rss/styles.xsl",
   });
 }
