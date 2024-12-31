@@ -47,11 +47,11 @@ const isStaging = import.meta.env.MODE == "staging";
     class="bg-stone-100 dark:bg-stone-950 text-zinc-800 dark:text-zinc-200 min-h-screen flex flex-col justify-between"
   >
     {isStaging && (
-      <div class="absolute top-0 left-0 z-50">
-        <svg xmlns="http://www.w3.org/2000/svg">
+      <div class="fixed top-0 left-0 z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
           <polygon points="128 0, 0 0, 0 128" style="fill:#7f1d1d;" />
         </svg>
-        <div class="absolute top-7 left-0.5 -rotate-45">
+        <div class="absolute top-7 left-0.5 -rotate-45 w-min">
           <p class="text-zinc-200 text-xl font-bold">Staging</p>
         </div>
       </div>
