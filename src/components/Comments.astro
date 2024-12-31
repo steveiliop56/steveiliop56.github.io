@@ -1,5 +1,5 @@
 ---
-
+const giscusEnable = import.meta.env.VITE_GISCUS_ENABLE;
 ---
 
 <script>
@@ -31,35 +31,46 @@
       });
     }
 
-    if (document.getElementsByClassName("giscus").length === 0) return;
+    class AstroGiscus extends HTMLElement {
+      connectedCallback() {
+        const enable = this.dataset.giscusEnable === "true";
 
-    const giscusAttributes = {
-      src: "https://giscus.app/client.js",
-      "data-repo": "steveiliop56/steveiliop56.github.io",
-      "data-repo-id": "R_kgDOMiZ-xg",
-      "data-category": "Comments",
-      "data-category-id": "DIC_kwDOMiZ-xs4Chz16",
-      "data-mapping": "pathname",
-      "data-strict": "0",
-      "data-reactions-enabled": "1",
-      "data-emit-metadata": "0",
-      "data-input-position": "bottom",
-      "data-theme": getGiscusTheme(),
-      "data-lang": "en",
-      "data-loading": "lazy",
-      crossorigin: "anonymous",
-      async: "",
-    };
+        if (enable) {
+          const giscusScript = document.createElement("script");
 
-    const giscusScript = document.createElement("script");
-    Object.entries(giscusAttributes).forEach(([key, value]) =>
-      giscusScript.setAttribute(key, value),
-    );
-    document.body.appendChild(giscusScript);
+          const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "steveiliop56/steveiliop56.github.io",
+            "data-repo-id": "R_kgDOMiZ-xg",
+            "data-category": "Comments",
+            "data-category-id": "DIC_kwDOMiZ-xs4Chz16",
+            "data-mapping": "pathname",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getGiscusTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+          };
 
-    const toggle = document.getElementById("themeToggle");
-    toggle?.addEventListener("click", setGiscusTheme);
+          Object.entries(giscusAttributes).forEach(([key, value]) =>
+            giscusScript.setAttribute(key, value),
+          );
+
+          document.body.appendChild(giscusScript);
+
+          const toggle = document.getElementById("themeToggle");
+          toggle?.addEventListener("click", setGiscusTheme);
+        }
+      }
+    }
+
+    customElements.define('astro-giscus', AstroGiscus);
   });
 </script>
 
-<div class="giscus"></div>
+<astro-giscus data-giscus-enable={giscusEnable} />
+
+<div class="giscus" />

@@ -7,7 +7,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://doesmycode.work",
+  site: import.meta.env.VITE_SITE_URL,
   base: "/",
   integrations: [tailwind(), icon()],
   markdown: {
