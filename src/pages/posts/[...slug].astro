@@ -26,32 +26,21 @@ const readTime = Math.round(words / 200);
 ---
 
 <BaseLayout title={post.data.title}>
-  <div class="flex flex-col flex-1 p-5 items-center">
-    <div class="flex flex-col gap-5 items-stretch max-w-4xl text-wrap break-words">
-      <div class="flex flex-col gap-1.5">
-        <p class="font-bold text-4xl">{post.data.title}</p>
-        <p class="text-zinc-800 dark:text-zinc-200">
-          {new Date(Date.parse(post.data.publishedOn)).toDateString()} &bull; {
-            readTime
-          } min &bull; {post.data.author}
-        </p>
-        {
-          typeof post.data.updatedOn !== "undefined" && (
-            <p class="text-zinc-800 dark:text-zinc-200">
-              Updated on{" "}
-              {new Date(Date.parse(post.data.updatedOn)).toDateString()}
-            </p>
-          )
-        }
-      </div>
-      <Toc headings={headings} />
-      <article
-        class="prose-headings:break-all break-words prose-code:break-all max-w-4xl prose prose-zinc prose-pre:overflow-x-auto prose-pre:max-w-xs md:prose-pre:max-w-4xl prose-headings:text-3xl prose-headings:text-zinc-800 dark:prose-headings:text-zinc-200 prose-li:text-zinc-800 dark:prose-li:text-zinc-200 prose-ul:text-zinc-800 dark:prose-ul:text-zinc-200 prose-p:text-zinc-800 dark:prose-p:text-zinc-200 prose-blockquote:not-italic dark:prose-invert"
-      >
-        <Content />
-      </article>
-      <Comments />
-      <ScrollToTopButton />
+  <div class="flex flex-col flex-1 py-4 px-4 md:px-32 gap-4 min-w-full">
+    <div class="flex flex-col gap-1">
+      <p class="text-2xl font-bold">{post.data.title}</p>
+      <p class="text-md">
+        {new Date(post.data.publishedOn).toDateString()} &bull; {readTime} min read
+        &bull; {post.data.author}
+      </p>
     </div>
+    <Toc headings={headings} />
+    <article
+      class="prose dark:prose-invert prose-zinc prose-code:break-all prose-a:break-all min-w-full"
+    >
+      <Content />
+    </article>
+    <ScrollToTopButton />
+    <Comments />
   </div>
 </BaseLayout>

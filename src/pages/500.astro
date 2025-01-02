@@ -10,13 +10,13 @@ const { error } = Astro.props;
 
 <BaseLayout title="Internal Server Error">
   <div
-    class="flex flex-col gap-3 items-center justify-center flex-1 p-5 text-center"
+    class="flex flex-col flex-1 gap-2 p-4 items-center justify-center text-center"
   >
-    <p class="text-4xl font-bold">Internal Server Error</p>
+    <p class="text-2xl font-bold">Internal Server Error</p>
     <p class="text-lg">
       Probably my code doesn't work, so why don't you try to <a
         href="javascript:location.reload();"
-        class="text-blue-400 hover:opacity-80 underline"
+        class="text-blue-600 dark:text-blue-400 hover:opacity-80 underline"
       >
         refresh
       </a>
@@ -25,7 +25,7 @@ const { error } = Astro.props;
       If you are interested in why my code failed, the error is <span
         class="text-red-600 text-lg"
       >
-        {error instanceof Error ? error.message : "unknown :("}
+        {error instanceof Error ? error.message : "i don't know :("}
       </span>
     </p>
   </div>

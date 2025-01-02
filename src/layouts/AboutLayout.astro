@@ -4,9 +4,11 @@ import BaseLayout from "./BaseLayout.astro";
 ---
 
 <BaseLayout title="About">
-  <div class="flex flex-col justify-center items-center flex-1 p-5">
+  <div
+    class="flex flex-col flex-1 py-4 px-4 md:px-32 min-w-full justify-center"
+  >
     <article
-      class="break-words prose-code:break-all max-w-4xl prose prose-zinc prose-pre:overflow-x-auto prose-pre:max-w-xs md:prose-pre:max-w-4xl prose-headings:text-3xl prose-headings:text-zinc-800 dark:prose-headings:text-zinc-200 prose-li:text-zinc-800 dark:prose-li:text-zinc-200 prose-ul:text-zinc-800 dark:prose-ul:text-zinc-200 prose-p:text-zinc-800 dark:prose-p:text-zinc-200 prose-blockquote:not-italic dark:prose-invert"
+      class="prose dark:prose-invert prose-zinc prose-code:break-all prose-a:break-all min-w-full"
     >
       <slot />
     </article>

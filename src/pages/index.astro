@@ -5,13 +5,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <script>
   document.addEventListener("astro:page-load", async () => {
     const typewriter = document.getElementById("typewriter");
-    const words = ["Software Developer", "Raspberry Pi Enthusiast", "Reckless Engineer", "Basketball Lover"];
+    const words = [
+      "Software Developer",
+      "Raspberry Pi Enthusiast",
+      "Reckless Engineer",
+      "Basketball Lover",
+    ];
 
     function type(word: string) {
       for (let i = 0; i < word.length; i++) {
         setTimeout(() => {
           typewriter!.innerHTML += word.charAt(i);
-        }, i * 100)
+        }, i * 100);
       }
     }
 
@@ -19,9 +24,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       for (let i = 0; i < typewriter!.innerHTML.length; i++) {
         setTimeout(() => {
           typewriter!.innerHTML = typewriter!.innerHTML.slice(0, -1);
-        }, i * 100)
+        }, i * 100);
       }
-
     }
 
     while (true) {
@@ -41,7 +45,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </script>
 
 <BaseLayout title="Home">
-  <div class="flex flex-col flex-1 items-center justify-center text-center gap-5 p-5">
+  <div
+    class="flex flex-col flex-1 items-center justify-center text-center gap-4 p-4"
+  >
     <div>
       <img
         src="/profile.jpg"
@@ -50,12 +56,24 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       />
     </div>
     <div>
-      <p class="font-bold text-3xl">Hello 👋, I am Stavros, a </p>
-      <p id="typewriter" class="min-h-14 leading-relaxed font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%" />
+      <p class="font-bold text-3xl">Hello 👋, I am Stavros, a</p>
+      <p
+        id="typewriter"
+        class="min-h-14 leading-relaxed font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%"
+      >
+      </p>
     </div>
     <div class="flex flex-row gap-2 items-center justify-center">
-      <a href="/about" class="bg-zinc-300 dark:bg-zinc-800 rounded-md py-2 px-3 hover:opacity-80">About</a>
-      <a href="/posts" class="bg-zinc-300 dark:bg-zinc-800 rounded-md py-2 px-3 hover:opacity-80">Posts</a>
+      <a
+        href="/about"
+        class="bg-zinc-300 dark:bg-zinc-800 rounded-md py-2 px-3 hover:opacity-80"
+        >About</a
+      >
+      <a
+        href="/posts"
+        class="bg-zinc-300 dark:bg-zinc-800 rounded-md py-2 px-3 hover:opacity-80"
+        >Posts</a
+      >
     </div>
   </div>
 </BaseLayout>

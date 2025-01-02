@@ -2,44 +2,54 @@
 const { headings } = Astro.props;
 
 interface Toc {
-    slug: string;
-    text: string;
-    subheadings: Toc[];
+  slug: string;
+  text: string;
+  subheadings: Toc[];
 }
 
 const toc: Toc[] = [];
 
 for (const heading of headings) {
-    const { slug, text, depth } = heading;
+  const { slug, text, depth } = heading;
 
-    if (depth == 2) {
-        toc.push({ slug, text, subheadings: [] });
-    } else if (depth == 3) {
-        toc[toc.length - 1].subheadings.push({ slug, text, subheadings: [] });
-    }
+  if (depth == 2) {
+    toc.push({ slug, text, subheadings: [] });
+  } else if (depth == 3) {
+    toc[toc.length - 1].subheadings.push({ slug, text, subheadings: [] });
+  }
 }
 ---
 
 {
-    toc.length > 0 && (
-        <div class="flex flex-col gap-2 items-start justify-start">
-            <p class="text-xl font-medium">Table of contents</p>
-            <ul class="list-decimal list-inside text-md indent-2">
-                {toc.map((heading) => (
-                    <li class="font-medium">
-                        <a href={`#${heading.slug}`} class="hover:opacity-80 font-normal underline text-blue-500">{heading.text}</a>
-                        {heading.subheadings.length > 0 && (
-                            <ul class="list-decimal list-inside text-md indent-8">
-                                {heading.subheadings.map((subheading) => (
-                                    <li class="font-medium">
-                                        <a href={`#${subheading.slug}`} class="hover:opacity-80 font-normal underline text-blue-500">{subheading.text}</a>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </li>
+  toc.length > 0 && (
+    <div class="flex flex-col gap-2 items-start justify-start">
+      <p class="text-xl font-medium">Table of contents</p>
+      <ul class="list-decimal list-inside text-md indent-2">
+        {toc.map((heading) => (
+          <li class="font-medium">
+            <a
+              href={`#${heading.slug}`}
+              class="hover:opacity-80 font-normal underline text-blue-500"
+            >
+              {heading.text}
+            </a>
+            {heading.subheadings.length > 0 && (
+              <ul class="list-decimal list-inside text-md indent-8">
+                {heading.subheadings.map((subheading) => (
+                  <li class="font-medium">
+                    <a
+                      href={`#${subheading.slug}`}
+                      class="hover:opacity-80 font-normal underline text-blue-500"
+                    >
+                      {subheading.text}
+                    </a>
+                  </li>
                 ))}
-            </ul>
-        </div>
-    )
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }

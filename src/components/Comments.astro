@@ -39,7 +39,7 @@ const giscusEnable = import.meta.env.VITE_GISCUS_ENABLE;
           const giscusScript = document.createElement("script");
 
           const giscusAttributes = {
-            "src": "https://giscus.app/client.js",
+            src: "https://giscus.app/client.js",
             "data-repo": "steveiliop56/steveiliop56.github.io",
             "data-repo-id": "R_kgDOMiZ-xg",
             "data-category": "Comments",
@@ -52,7 +52,7 @@ const giscusEnable = import.meta.env.VITE_GISCUS_ENABLE;
             "data-theme": getGiscusTheme(),
             "data-lang": "en",
             "data-loading": "lazy",
-            "crossorigin": "anonymous",
+            crossorigin: "anonymous",
           };
 
           Object.entries(giscusAttributes).forEach(([key, value]) =>
@@ -67,10 +67,10 @@ const giscusEnable = import.meta.env.VITE_GISCUS_ENABLE;
       }
     }
 
-    customElements.define('astro-giscus', AstroGiscus);
+    customElements.define("astro-giscus", AstroGiscus);
   });
 </script>
 
-<astro-giscus data-giscus-enable={giscusEnable} />
+<astro-giscus data-giscus-enable={giscusEnable}></astro-giscus>
 
-<div class="giscus" />
+<div class="giscus"></div>

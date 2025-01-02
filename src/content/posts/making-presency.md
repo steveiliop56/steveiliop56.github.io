@@ -1,5 +1,5 @@
 ---
-title: 'Making presency'
+title: "Making presency"
 description: "I made presency, a simple why to customize the Discord Rich Presence because...why not?"
 publishedOn: 2024-10-12
 author: Stavros
@@ -29,14 +29,14 @@ And in turn Wails automatically adds a new function in JavaScript:
 
 ```javascript
 export function Hello(arg1) {
-  return window['go']['main']['App']['Hello'](arg1);
+  return window["go"]["main"]["App"]["Hello"](arg1);
 }
 ```
 
 And its types in TypeScript:
 
 ```typescript
-export function Hello(arg1:string):Promise<void>;
+export function Hello(arg1: string): Promise<void>;
 ```
 
 In this way you can import all your Go backend functions in your frontend and use them like this:

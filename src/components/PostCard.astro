@@ -7,7 +7,7 @@ const readTime = Math.round(words / 200);
 
 <a href={`/posts/${post.slug}`}>
   <div
-    class="flex bg-zinc-200 dark:bg-zinc-800 hover:opacity-80 rounded-md p-5 flex-col gap-1 max-w-full break-words"
+    class="flex flex-col bg-zinc-200 dark:bg-zinc-800 hover:opacity-80 rounded-md p-4 gap-1 max-w-full break-words"
   >
     <p class="font-bold text-lg text-zinc-800 dark:text-zinc-300">
       {post.data.title}
@@ -15,7 +15,7 @@ const readTime = Math.round(words / 200);
     <p class="text-zinc-700 dark:text-zinc-300">{post.data.description}</p>
     <p class="text-zinc-700 dark:text-zinc-300">
       {new Date(Date.parse(post.data.publishedOn)).toDateString()} &bull;
-      {readTime} min &bull; {post.data.author}
+      {readTime} min read &bull; {post.data.author}
     </p>
   </div>
 </a>
