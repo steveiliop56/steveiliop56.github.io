@@ -15,8 +15,7 @@ const giscusEnable = import.meta.env.VITE_GISCUS_ENABLE;
       const iframe = document.querySelector<HTMLIFrameElement>(
         "iframe.giscus-frame",
       );
-      if (!iframe) return;
-      if (!iframe.contentWindow) return;
+      if (!iframe || !iframe.contentWindow) return;
       iframe.contentWindow.postMessage(
         { giscus: message },
         "https://giscus.app",
@@ -67,7 +66,8 @@ const giscusEnable = import.meta.env.VITE_GISCUS_ENABLE;
       }
     }
 
-    customElements.define("astro-giscus", AstroGiscus);
+    customElements.get("astro-giscus") ||
+      customElements.define("astro-giscus", AstroGiscus);
   });
 </script>
 
