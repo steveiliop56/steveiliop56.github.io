@@ -27,7 +27,8 @@ const plausibleEnable = import.meta.env.VITE_PLAUSIBLE_ENABLE;
       }
     }
 
-    customElements.define("astro-plausible", AstroPlausible);
+    customElements.get("astro-plausible") ||
+      customElements.define("astro-plausible", AstroPlausible);
   });
 </script>
 

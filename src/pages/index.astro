@@ -15,16 +15,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     function type(word: string) {
       for (let i = 0; i < word.length; i++) {
         setTimeout(() => {
-          typewriter!.innerHTML += word.charAt(i);
+          if (typewriter) {
+            typewriter.innerHTML += word.charAt(i);
+          }
         }, i * 100);
       }
     }
 
     function remove() {
-      for (let i = 0; i < typewriter!.innerHTML.length; i++) {
-        setTimeout(() => {
-          typewriter!.innerHTML = typewriter!.innerHTML.slice(0, -1);
-        }, i * 100);
+      if (typewriter && typewriter.innerHTML) {
+        for (let i = 0; i < typewriter!.innerHTML.length; i++) {
+          setTimeout(() => {
+            typewriter.innerHTML = typewriter.innerHTML.slice(0, -1);
+          }, i * 100);
+        }
       }
     }
 
@@ -36,8 +40,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         });
 
         await new Promise((resolve) => {
-          remove();
-          setTimeout(resolve, typewriter!.innerHTML.length * 100);
+          if (typewriter && typewriter.innerHTML) {
+            remove();
+            setTimeout(resolve, typewriter!.innerHTML.length * 100);
+          }
         });
       }
     }
