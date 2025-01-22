@@ -1,21 +1,40 @@
 ---
-const { title, description, image, link } = Astro.props;
+import { Icon } from "astro-icon/components";
+
+const { repository, description } = Astro.props;
+
+async function getStars() {
+  const res = await fetch(`https://api.github.com/repos/${repository}`);
+  const data = await res.json();
+  return data.stargazers_count;
+}
+
+const stars = await getStars();
+
+const formatter = new Intl.NumberFormat("en", {
+  notation: "compact",
+  compactDisplay: "short",
+});
 ---
 
-<a aria-label={title} href={link}>
-  <div
-    class="flex flex-row gap-4 hover:opacity-80 max-w-md justify-center items-center"
-  >
-    <div class="flex justify-center items-center">
-      <img
-        src={image}
-        alt={`${title} logo`}
-        class="rounded drop-shadow-lg max-w-20"
-      />
+<div
+  class="flex flex-col border-zinc-200 dark:border-zinc-800 border rounded-md p-4 max-w-md gap-2"
+>
+  <div class="flex flex-row justify-between">
+    <div class="flex flex-row gap-2 items-center">
+      <Icon name="tabler:brand-github" class="w-6 h-6" />
+      <a
+        href={`https://github.com/${repository}`}
+        title={repository}
+        class="text-blue-600 dark:text-blue-400 hover:opacity-80 underline text-base font-medium"
+      >
+        {repository}
+      </a>
     </div>
-    <div class="flex flex-col gap-1 justify-center">
-      <p class="font-bold text-lg">{title}</p>
-      <p class="text-base text-zinc-700 dark:text-zinc-300">{description}</p>
+    <div class="flex flex-row gap-1 items-center">
+      <Icon name="tabler:star-filled" class="w-4 h-4 text-yellow-500" />
+      <p class="text-base font-medium">{formatter.format(stars)}</p>
     </div>
   </div>
-</a>
+  <p class="text-base text-zinc-700 dark:text-zinc-400">{description}</p>
+</div>

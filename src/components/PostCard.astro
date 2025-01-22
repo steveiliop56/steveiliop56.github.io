@@ -12,8 +12,8 @@ const readTime = Math.round(words / 200);
     <p class="font-bold text-lg text-zinc-800 dark:text-zinc-300">
       {post.data.title}
     </p>
-    <p class="text-zinc-700 dark:text-zinc-300">{post.data.description}</p>
-    <p class="text-zinc-700 dark:text-zinc-300">
+    <p class="text-zinc-700 dark:text-zinc-400">{post.data.description}</p>
+    <p class="text-zinc-700 dark:text-zinc-400">
       {new Date(Date.parse(post.data.publishedOn)).toDateString()} &bull;
       {readTime} min read &bull; {post.data.author}
     </p>

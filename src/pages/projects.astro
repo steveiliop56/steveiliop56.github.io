@@ -2,44 +2,29 @@
 import ProjectCard from "../components/ProjectCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const projects = [
+interface Projects {
+  repository: string;
+  description: string;
+}
+
+const projects: Projects[] = [
   {
-    title: "Runtipi",
+    repository: "runtipi/runtipi",
     description:
       "Runtipi is a homeserver for everyone! One command setup, one click installs for your favorites self-hosted apps.",
-    link: "https://github.com/runtipi/runtipi",
-    image:
-      "https://raw.githubusercontent.com/runtipi/runtipi/refs/heads/develop/packages/frontend/public/tipi.png",
   },
   {
-    title: "GetAShell",
-    description: "Quickly spin up ssh shells from a dead simple UI.",
-    link: "https://github.com/steveiliop56/getashell",
-    image:
-      "https://github.com/steveiliop56/getashell/blob/main/public/logo.png?raw=true",
+    repository: "steveiliop56/tinyauth",
+    description: "The simplest way to protect your apps with a login screen.",
   },
   {
-    title: "Presency",
+    repository: "steveiliop56/tipimate",
     description:
-      "The easiest way to customize your Discord Rich Presence status.",
-    link: "https://github.com/steveiliop56/presency",
-    image:
-      "https://github.com/steveiliop56/presency/blob/main/build/appicon.png?raw=true",
+      "The easiest way to get notified about updates for your Runtipi apps!",
   },
   {
-    title: "PyDucky",
-    description:
-      "A simple Python scripts that gets you up and running with pico-ducky fast and easy.",
-    link: "https://github.com/steveiliop56/pyducky",
-    image:
-      "https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png",
-  },
-  {
-    title: "PyOS",
-    description:
-      'A Linux-like "operating system" written in Python and of course... it is better than windows!',
-    link: "https://github.com/steveiliop56/PyOS",
-    image: "https://github.com/steveiliop56/PyOS/raw/main/logo.png",
+    repository: "steveiliop56/steveiliop56.github.io",
+    description: "My personal website.",
   },
 ];
 ---
@@ -49,7 +34,7 @@ const projects = [
     <div class="flex flex-col gap-4 items-stretch">
       <p class="text-4xl font-bold">Projects</p>
       <p>Here are my favorite projects that I have built/worked on:</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {projects.map((project) => <ProjectCard {...project} />)}
       </div>
     </div>
