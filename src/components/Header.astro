@@ -16,6 +16,8 @@ const navItems = [
     const openMenu = () => {
       const menu = document.getElementById("menu");
       const body = document.body;
+      menu?.classList.remove("animate-fade-out");
+      menu?.classList.add("animate-fade-in");
       menu?.classList.remove("hidden");
       menu?.classList.add("flex");
       body?.classList.add("overflow-hidden");
@@ -23,9 +25,13 @@ const navItems = [
     const closeMenu = () => {
       const menu = document.getElementById("menu");
       const body = document.body;
-      menu?.classList.remove("flex");
-      menu?.classList.add("hidden");
-      body?.classList.remove("overflow-hidden");
+      menu?.classList.remove("animate-fade-in");
+      menu?.classList.add("animate-fade-out");
+      setTimeout(() => {
+        menu?.classList.remove("flex");
+        menu?.classList.add("hidden");
+        body?.classList.remove("overflow-hidden");
+      }, 200);
     };
     const menuOpen = document.getElementById("menu-open");
     const menuClose = document.getElementById("menu-close");
