@@ -3,27 +3,32 @@ import ProjectCard from "../components/ProjectCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 interface Projects {
-  repository: string;
+  name: string;
   description: string;
+  repo: string;
 }
 
 const projects: Projects[] = [
   {
-    repository: "runtipi/runtipi",
+    name: "Runtipi",
+    repo: "runtipi/runtipi",
     description:
       "Runtipi is a homeserver for everyone! One command setup, one click installs for your favorites self-hosted apps.",
   },
   {
-    repository: "steveiliop56/tinyauth",
+    name: "Tinyauth",
+    repo: "steveiliop56/tinyauth",
     description: "The simplest way to protect your apps with a login screen.",
   },
   {
-    repository: "steveiliop56/tipimate",
+    name: "Tipimate",
+    repo: "steveiliop56/tipimate",
     description:
       "The easiest way to get notified about updates for your Runtipi apps!",
   },
   {
-    repository: "steveiliop56/steveiliop56.github.io",
+    name: "Website",
+    repo: "steveiliop56/steveiliop56.github.io",
     description: "My personal website.",
   },
 ];

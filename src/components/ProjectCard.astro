@@ -1,10 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const { repository, description } = Astro.props;
+const { repo, description, name } = Astro.props;
 
 async function getStars() {
-  const res = await fetch(`https://api.github.com/repos/${repository}`);
+  const res = await fetch(`https://api.github.com/repos/${repo}`);
   const data = await res.json();
   return data.stargazers_count;
 }
@@ -24,11 +24,11 @@ const formatter = new Intl.NumberFormat("en", {
     <div class="flex flex-row gap-2 items-center">
       <Icon name="tabler:brand-github" class="w-6 h-6" />
       <a
-        href={`https://github.com/${repository}`}
-        title={repository}
+        href={`https://github.com/${repo}`}
+        title={name}
         class="text-blue-600 dark:text-blue-400 hover:opacity-80 underline text-base font-medium"
       >
-        {repository}
+        {name}
       </a>
     </div>
     <div class="flex flex-row gap-1 items-center">
