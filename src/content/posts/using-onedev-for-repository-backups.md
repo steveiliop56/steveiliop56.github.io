@@ -2,6 +2,7 @@
 title: "Using OneDev for Repository Backups"
 description: "I just discovered this awesome tool called OneDev so let's use it for local repository backups!"
 publishedOn: 2024-08-17
+updatedOn: 2025-02-02
 author: Stavros
 ---
 
@@ -78,23 +79,22 @@ jobs:
         condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
     triggers: # Delete this section to only run manually
       - !ScheduleTrigger
-        cronExpression: 0 15 10 ? * * # Chnage time (right not it is every day at 10:15AM)
+        cronExpression: 0 15 10 ? * * # Chnage time (right now it is every day at 10:15AM)
     retryCondition: never
     maxRetries: 3
     retryDelay: 30
     timeout: 3600
 ```
 
-> Warning ⚠️: Make sure to replace the workflow values with your own values
+> Warning ⚠️: Make sure to replace the workflow values with your own values.
 
-It is completely different from Github Workflows but it gets the job done. The only issue is that when you run commands and install packages you have to do everything in one step else everything that's not in your current working directory will be deleted. No problem though it works perfectly. Let me explain what it does:
+It is completely different from Github Workflows but it gets the job done. The only issue is that when you run commands and install packages, you have to do everything in one step else everything that's not in your current working directory will be deleted. No problem though, it works perfectly. Let me explain what it does:
 
 - Firstly, we checkout the current code
 - Secondly, we use the Clone Repository (which replaces our current repository's contents and deletes our workflow _lol_)
 - Thirdly we install git, configure it, backup our current workflow file, pull (resetting the changes), add the workflow back and commit
-
-And that's it! We just backed up our repository! The workflow will automatically run every day at 10:15AM but you can delete the entire `triggers` section to run it only manually, I use that for some archived repos.
+  And that's it! We just backed up our repository! The workflow will automatically run every day at 10:15AM but you can delete the entire `triggers` section to run it only manually, I use that for some archived repos.
 
 ## Conclusion
 
-So overall I am extremely happy with my workflow turned out and how easy it was to make in OneDev. If you are using Gitea I blindly recommend you to give OneDev a try and I am sure you will like it! That's it for today...see ya!
+So overall I am extremely happy with how my workflow turned out and how easy it was to make in OneDev. If you are using Gitea, I blindly recommend you to give OneDev a try and I am sure you will like it! That's it for today...see ya!
