@@ -54,42 +54,42 @@ All three apps have some features that make them special.
 
 Casa OS offers:
 
-- Filebrowser with support for Samba sharing.
-- External links to the dashboard.
-- Add your own apps by importing Docker CLI/Docker compose or filling a form.
-- Customize app compose through the UI.
-- Shell access to the host.
-- Logs (not for apps).
-- Disk merging (something like RAID).
-- Restart/shutdown buttons.
+- Filebrowser with support for Samba sharing
+- External links to the dashboard
+- Add your own apps by importing Docker CLI/Docker compose or filling a form
+- Customize app compose through the UI
+- Shell access to the host
+- Logs (not for apps)
+- Disk merging (something like RAID)
+- Restart/shutdown buttons
 
 ### Umbrel
 
 Umbrel offers:
 
-- Extensive widget support.
-- Shell access to the host and apps.
-- Log viewer for both apps and Umbrel.
-- Authentication for apps.
-- Expose apps to the TOR network.
-- Applications that integrate with the UI (Back that Mac up).
-- OTA Updates.
-- Filebrowser.
-- Restart/shutdown buttons.
-- Resource monitor.
+- Extensive widget support
+- Shell access to the host and apps
+- Log viewer for both apps and Umbrel
+- Authentication for apps
+- Expose apps to the TOR network
+- Applications that integrate with the UI (Back that Mac up)
+- OTA Updates
+- Filebrowser
+- Restart/shutdown buttons
+- Resource monitor
 
 ### Runtipi
 
 Runtipi offers:
 
-- Builtin Traefik that exposes your apps security with the HTTP/DNS challenge.
-- External links in the dashboard.
-- Guest dashboard for sharing apps without being authenticated.
-- Log viewer for both apps and Runtipi itself.
-- Documented API for controlling it without the Dashboard (so apps like [tipimate](https://github.com/steveiliop56/tipimate) exist).
-- Really nice CLI for starting/restarting/updating.
-- Ability to extend both an app's compose file and runtipi's compose file.
-- The entire app is dockerized and it is self-contained in one directory in the filesystem.
+- Builtin Traefik that exposes your apps security with the HTTP/DNS challenge
+- External links in the dashboard
+- Guest dashboard for sharing apps without being authenticated
+- Log viewer for both apps and Runtipi itself
+- Documented API for controlling it without the Dashboard (so apps like [tipimate](https://github.com/steveiliop56/tipimate) exist)
+- Really nice CLI for starting/restarting/updating
+- Ability to extend both an app's compose file and runtipi's compose file
+- The entire app is dockerized and it is self-contained in one directory in the filesystem
 
 ## Developer experience
 
