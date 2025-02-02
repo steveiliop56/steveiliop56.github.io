@@ -1,6 +1,6 @@
 ---
-title: "Trying out olivetin"
-descrtipion: "I just discovered this awesome tool called OliveTin and it helped me automate my life."
+title: "Trying out Ilivetin"
+description: "I just discovered this awesome tool called Olivetin and it helped me automate my life."
 publishedOn: 2024-07-04
 author: Stavros
 ---
