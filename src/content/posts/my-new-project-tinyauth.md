@@ -1,5 +1,5 @@
 ---
-title: "My nre project, Tinyauth"
+title: "My new project, Tinyauth"
 description: "I just made Tinyauth, the easiest way to secure your apps with a login screen."
 publishedOn: 2025-02-07
 author: Stavros
