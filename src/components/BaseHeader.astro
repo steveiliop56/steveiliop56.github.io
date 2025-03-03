@@ -2,33 +2,33 @@
 const { title } = Astro.props;
 
 const siteTitle = import.meta.env.VITE_SITE_TITLE;
-const plausibleEnable = import.meta.env.VITE_PLAUSIBLE_ENABLE;
+const analyticsEnable = import.meta.env.VITE_ANALYTICS_ENABLE;
 ---
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    class AstroPlausible extends HTMLElement {
+    class AstroAnalytics extends HTMLElement {
       connectedCallback() {
-        const enable = this.dataset.plausibleEnable === "true";
+        const enable = this.dataset.analyticsEnable === "true";
         if (enable) {
-          const plausibleAttributes = {
-            src: "https://analytics.doesmycode.work/js/script.js",
-            "data-domain": "doesmycode.work",
+          const umamiAttributes = {
+            src: "https://umami-analytics.runtipi.local/script.js",
+            "data-website-id": "1940b296-a8c6-4663-bcb0-0ee20a0b7c97",
           };
 
-          const plausibleScript = document.createElement("script");
+          const umamiScript = document.createElement("script");
 
-          Object.entries(plausibleAttributes).forEach(([key, value]) =>
-            plausibleScript.setAttribute(key, value),
+          Object.entries(umamiAttributes).forEach(([key, value]) =>
+            umamiScript.setAttribute(key, value),
           );
 
-          document.head.appendChild(plausibleScript);
+          document.head.appendChild(umamiScript);
         }
       }
     }
 
-    customElements.get("astro-plausible") ||
-      customElements.define("astro-plausible", AstroPlausible);
+    customElements.get("astro-analytics") ||
+      customElements.define("astro-analytics", AstroAnalytics);
   });
 </script>
 
@@ -50,6 +50,6 @@ const plausibleEnable = import.meta.env.VITE_PLAUSIBLE_ENABLE;
   href={new URL("rss.xml", Astro.site)}
 />
 
-<astro-plausible data-plausible-enable={plausibleEnable}></astro-plausible>
+<astro-analytics data-analytics-enable={analyticsEnable}></astro-analytics>
 
 <title>{title} | {siteTitle}</title>
