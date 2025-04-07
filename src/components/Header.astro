@@ -41,33 +41,35 @@ const navItems = [
 </script>
 
 <header
-  class="min-w-full bg-transparent p-4 flex justify-between sticky top-0 backdrop-blur-3xl border-b-2 border-zinc-950 border-opacity-5 dark:border-zinc-100 dark:border-opacity-5 z-50"
+  class="sticky top-0 z-10 bg-opacity-30 dark:bg-opacity-30 backdrop-filter backdrop-blur-lg bg-neutral-200 dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-800"
 >
-  <div class="flex flex-row gap-2">
-    <a href="/">
-      <p class="text-2xl font-bold w-min">Doesmycode.work</p>
-    </a>
-    <ThemeSwitch />
-  </div>
-  <div class="flex-row gap-4 hidden md:flex">
-    {navItems.map((item) => <HeaderLink link={item.link} title={item.title} />)}
-  </div>
-  <Icon
-    id="menu-open"
-    class="w-8 h-8 md:hidden"
-    name="tabler:menu-2"
-    aria-label="Open menu"
-  />
-  <div
-    id="menu"
-    class="fixed top-0 left-0 min-h-screen w-screen z-50 inset-0 bg-neutral-100 dark:bg-neutral-900 flex-col gap-4 items-center justify-center hidden md:hidden"
-  >
-    <Icon
-      id="menu-close"
-      class="absolute top-5 right-5 w-8 h-8"
-      name="tabler:x"
-      aria-label="Close menu"
-    />
-    {navItems.map((item) => <HeaderLink link={item.link} title={item.title} />)}
+  <div class="flex items-center justify-between p-4">
+    <div class="flex flex-row gap-2">
+      <a href="/" class="text-2xl font-bold">Doesmycode.work</a>
+      <ThemeSwitch />
+    </div>
+    <div class="hidden md:flex flex-row gap-4">
+      {navItems.map((item) => <HeaderLink item={item} />)}
+    </div>
+    <div class="flex md:hidden">
+      <Icon
+        id="menu-open"
+        class="size-7"
+        name="tabler:menu-2"
+        aria-label="Open menu"
+      />
+      <div
+        id="menu"
+        class="fixed top-0 left-0 min-h-screen z-50 inset-0 bg-neutral-100 dark:bg-neutral-900 flex-col gap-4 items-center justify-center hidden"
+      >
+        <Icon
+          id="menu-close"
+          class="absolute top-5 right-5 size-7"
+          name="tabler:x"
+          aria-label="Close menu"
+        />
+        {navItems.map((item) => <HeaderLink item={item} />)}
+      </div>
+    </div>
   </div>
 </header>

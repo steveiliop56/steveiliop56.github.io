@@ -1,5 +1,7 @@
 ---
-const { link, title } = Astro.props;
+const {
+  item: { link, title },
+} = Astro.props;
 ---
 
 <a href={link}>
