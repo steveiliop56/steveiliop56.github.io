@@ -24,7 +24,9 @@ const { repo, description, name } = Astro.props;
           const stars = await getStars();
           const starsElement = document.getElementById(`${repo}-stars`);
           if (starsElement) {
-            starsElement.innerText = formatter.format(stars);
+            starsElement.innerText = formatter
+              .format(stars)
+              .toLocaleLowerCase();
           }
         }
 
