@@ -2,39 +2,62 @@
 import { Icon } from "astro-icon/components";
 
 const { repo, description, name } = Astro.props;
-
-async function getStars() {
-  const res = await fetch(`https://api.github.com/repos/${repo}`);
-  const data = await res.json();
-  return data.stargazers_count;
-}
-
-const stars = await getStars();
-
-const formatter = new Intl.NumberFormat("en", {
-  notation: "compact",
-  compactDisplay: "short",
-});
 ---
 
-<div
-  class="flex flex-col border-neutral-200 dark:border-neutral-800 border rounded-md p-4 max-w-md gap-2"
->
-  <div class="flex flex-row justify-between">
-    <div class="flex flex-row gap-2 items-center">
-      <Icon name="tabler:brand-github" class="size-6" />
-      <a
-        href={`https://github.com/${repo}`}
-        title={name}
-        class="text-blue-600 dark:text-blue-400 hover:opacity-80 underline text-base font-medium"
-      >
-        {name}
-      </a>
+<script>
+  document.addEventListener("astro:page-load", () => {
+    class AstroProject extends HTMLElement {
+      connectedCallback() {
+        const repo = this.dataset.repo;
+        const formatter = new Intl.NumberFormat("en", {
+          notation: "compact",
+          compactDisplay: "short",
+        });
+
+        async function getStars() {
+          const res = await fetch(`https://api.github.com/repos/${repo}`);
+          const data = await res.json();
+          return data.stargazers_count;
+        }
+
+        async function updateStars() {
+          const stars = await getStars();
+          const starsElement = document.getElementById(`${repo}-stars`);
+          if (starsElement) {
+            starsElement.innerText = formatter.format(stars);
+          }
+        }
+
+        updateStars();
+      }
+    }
+
+    customElements.define("astro-project", AstroProject);
+  });
+</script>
+
+<astro-project data-repo={repo}>
+  <div
+    class="flex flex-col border-neutral-200 dark:border-neutral-800 border rounded-md p-4 max-w-md gap-2"
+  >
+    <div class="flex flex-row justify-between">
+      <div class="flex flex-row gap-2 items-center">
+        <Icon name="tabler:brand-github" class="size-6" />
+        <a
+          href={`https://github.com/${repo}`}
+          title={name}
+          class="text-blue-600 dark:text-blue-400 hover:opacity-80 underline text-base font-medium"
+        >
+          {name}
+        </a>
+      </div>
+      <div class="flex flex-row gap-1 items-center">
+        <Icon name="tabler:star-filled" class="w-4 h-4 text-yellow-500" />
+        <p class="text-base font-medium" id={`${repo}-stars`}></p>
+      </div>
     </div>
-    <div class="flex flex-row gap-1 items-center">
-      <Icon name="tabler:star-filled" class="w-4 h-4 text-yellow-500" />
-      <p class="text-base font-medium">{formatter.format(stars)}</p>
-    </div>
+    <p class="text-base text-neutral-700 dark:text-neutral-400">
+      {description}
+    </p>
   </div>
-  <p class="text-base text-neutral-700 dark:text-neutral-400">{description}</p>
-</div>
+</astro-project>
