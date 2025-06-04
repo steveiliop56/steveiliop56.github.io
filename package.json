@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.2.7",
-    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/typography": "^0.5.15",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1"
   }
