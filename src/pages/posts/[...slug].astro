@@ -10,10 +10,7 @@ export async function getStaticPaths() {
     (a, b) => Date.parse(b.data.publishedOn) - Date.parse(a.data.publishedOn),
   );
 
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: post,
-  }));
+  return posts.map((post) => ({ params: { slug: post.slug }, props: post }));
 }
 
 type Props = CollectionEntry<"posts">;
@@ -26,21 +23,23 @@ const readTime = Math.round(words / 200);
 ---
 
 <BaseLayout title={post.data.title}>
-  <div class="flex flex-col flex-1 py-4 px-4 md:px-32 gap-4 min-w-full">
-    <div class="flex flex-col gap-1">
-      <p class="text-2xl font-bold">{post.data.title}</p>
-      <p class="text-md">
-        {new Date(post.data.publishedOn).toDateString()} &bull; {readTime} min read
-        &bull; {post.data.author}
-      </p>
+  <div class="flex flex-col p-4 items-center">
+    <div class="flex flex-col items-start gap-4">
+      <div class="flex flex-col gap-1">
+        <p class="text-2xl font-bold">{post.data.title}</p>
+        <p class="text-md">
+          {new Date(post.data.publishedOn).toDateString()} &bull; {readTime} min
+          read &bull; {post.data.author}
+        </p>
+      </div>
+      <Toc headings={headings} />
+      <article
+        class="prose dark:prose-invert prose-neutral prose-code:break-all prose-a:break-all max-w-screen-md"
+      >
+        <Content />
+      </article>
+      <ScrollToTopButton />
+      <Comments />
     </div>
-    <Toc headings={headings} />
-    <article
-      class="prose dark:prose-invert prose-neutral prose-code:break-all prose-a:break-all min-w-full"
-    >
-      <Content />
-    </article>
-    <ScrollToTopButton />
-    <Comments />
   </div>
 </BaseLayout>

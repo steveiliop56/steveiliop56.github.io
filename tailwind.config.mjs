@@ -6,16 +6,12 @@ export default {
       animation: {
         "fade-in": "fadeIn 0.25s ease-in-out",
         "fade-out": "fadeOut 0.25s ease-in-out",
+        blink: "blink 1s infinite",
       },
       keyframes: {
-        fadeIn: {
-          "0%": { opacity: 0 },
-          "100%": { opacity: 1 },
-        },
-        fadeOut: {
-          "0%": { opacity: 1 },
-          "100%": { opacity: 0 },
-        },
+        fadeIn: { "0%": { opacity: 0 }, "100%": { opacity: 1 } },
+        fadeOut: { "0%": { opacity: 1 }, "100%": { opacity: 0 } },
+        blink: { "0%, 100%": { opacity: 1 }, "50%": { opacity: 0 } },
       },
     },
   },

@@ -8,9 +8,7 @@ import { Icon } from "astro-icon/components";
 
     const handleToggleClick = () => {
       const element = document.documentElement;
-      const body = document.body;
 
-      body.classList.add("transition-colors", "duration-200");
       element.classList.toggle("dark");
 
       const isDark = element.classList.contains("dark");
@@ -22,10 +20,11 @@ import { Icon } from "astro-icon/components";
   });
 </script>
 
-<div
-  class="flex justify-center items-center hover:cursor-pointer"
+<button
+  class="flex justify-center items-center hover:cursor-pointer transition duration-200 ease-in-out"
   id="themeToggle"
+  aria-label="Toggle theme"
 >
-  <Icon class="hidden dark:block w-6 h-6 text-neutral-200" name="tabler:sun" />
-  <Icon class="dark:hidden w-6 h-6 text-neutral-900" name="tabler:moon" />
-</div>
+  <Icon class="hidden dark:block w-6 h-6" name="tabler:sun" />
+  <Icon class="dark:hidden w-6 h-6" name="tabler:moon" />
+</button>

@@ -12,9 +12,5 @@ export default defineConfig({
   site: import.meta.env.VITE_SITE_URL,
   base: "/",
   integrations: [tailwind(), icon(), sitemap()],
-  markdown: {
-    shikiConfig: {
-      theme: "one-dark-pro",
-    },
-  },
+  markdown: { shikiConfig: { theme: "one-dark-pro" } },
 });
