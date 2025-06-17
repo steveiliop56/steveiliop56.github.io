@@ -1,11 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-interface Props {
-  error: unknown;
-}
-
-const { error } = Astro.props;
 ---
 
 <BaseLayout title="Internal Server Error">
@@ -16,17 +10,11 @@ const { error } = Astro.props;
     <p class="text-lg">
       Probably my code doesn't work, so why don't you try to <a
         href="javascript:location.reload();"
-        class="text-blue-600 dark:text-blue-400 hover:opacity-80 underline"
+        class="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors underline"
       >
         refresh
       </a>
-    </p>
-    <p class="text-lg">
-      If you are interested in why my code failed, the error is <span
-        class="text-red-600 text-lg"
-      >
-        {error instanceof Error ? error.message : "i don't know :("}
-      </span>
+      . You can also check the console for more details.
     </p>
   </div>
 </BaseLayout>
