@@ -9,7 +9,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: import.meta.env.VITE_SITE_URL,
+  site: "https://doesmycode.work",
   base: "/",
   integrations: [tailwind(), icon(), sitemap()],
   markdown: { shikiConfig: { theme: "one-dark-pro" } },
