@@ -22,7 +22,8 @@ Firstly we need to setup the DNS records of our domain to point to the IP addres
 - `domain.com` pointing to `your-server-internal-ip` as an A record
 - `*.domain.com` pointing to `your-server-internal-ip` as an A record
 
-> Note 📝: If you don’t want to use the root of your domain, you can also do `somesubdomain.domain.com` and `*.somesubdomain.domain.com`
+> [!NOTE]
+> If you don’t want to use the root of your domain, you can also do `somesubdomain.domain.com` and `*.somesubdomain.domain.com`
 
 ## Obtaining an API token
 
@@ -47,7 +48,8 @@ services:
       - ./data/letsencrypt:/etc/letsencrypt
 ```
 
-> Note 📝: I am using the `latest` image tag here which is not the best practice. I would recommend you visit the [Github](https://github.com/NginxProxyManager/nginx-proxy-manager) page and use the latest version as tag.
+> [!NOTE]
+> I am using the `latest` image tag here which is not the best practice. I would recommend you visit the [Github](https://github.com/NginxProxyManager/nginx-proxy-manager) page and use the latest version as tag.
 
 Now you can simply do `docker compose up -d` and after a minute or so npm should be accessible on `http://yourmachinesip:81`. There you can login with `admin@example.com` and password `changeme`. After logging in you will be immediately prompted to change your password and set a new email address and name.
 

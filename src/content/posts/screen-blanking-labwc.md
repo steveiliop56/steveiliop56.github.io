@@ -6,7 +6,8 @@ updatedOn: 2024-11-03
 author: Stavros
 ---
 
-> Note 📝: As of 31/10/2024 this issue has been fixed, turns out it was an issue in the wayvnc server. [Here](https://doesmycode.work/posts/hyperpixel-raspberry-pi-os-bookworm) is my latest post on the best setup with the hyperpixel screen and the new raspberry pi os with the labwc compositor.
+> [!NOTE]
+> As of 31/10/2024 this issue has been fixed, turns out it was an issue in the wayvnc server. [Here](https://doesmycode.work/posts/hyperpixel-raspberry-pi-os-bookworm) is my latest post on the best setup with the hyperpixel screen and the new raspberry pi os with the labwc compositor.
 
 Sooo I use my raspberry pi 5 with a hyperpixel screen, but my setup has an issue, screen blanking doesn't work, that's a big problem! In this hell of debugging mess I will try to find a solution to make screen blanking work on the pi, or at least try.
 

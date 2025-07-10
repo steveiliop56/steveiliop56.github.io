@@ -28,13 +28,15 @@ But first requirements… We need some supplies to make this happen.
 - A monitor (we need to get the raspberry pi serial number)
 - A micro HDMI to HDMI cable to connect the raspberry pi to the screen
 
-> Note ✏️: You could get the raspberry pi serial number and mac address through raspberry pi os too, I just used the go to method of plugging it to a display and reading the status.
+> [!NOTE]
+> You could get the raspberry pi serial number and mac address through raspberry pi os too, I just used the go to method of plugging it to a display and reading the status.
 
 ## Steps
 
 So enough of the technical part, let's set it up! Here is a step by step guide on all of the steps you should follow:
 
-> Warning ⚠️: You will need to run all commands as root in your debian server so if you aren't root please switch user with `sudo su` or `su`.
+> [!WARNING]
+> You will need to run all commands as root in your debian server so if you aren't root please switch user with `sudo su` or `su`.
 
 ### Step 1
 
@@ -56,7 +58,8 @@ Firstly for holding our operating system:
 
 `mkdir -p /srv/nfs/pi4-1`
 
-> Note ✏️: You can use any name you like here, I just used `pi4-1` for convenience. If you do change the name, make sure to replace it on all of the commands below.
+> [!NOTE]
+> You can use any name you like here, I just used `pi4-1` for convenience. If you do change the name, make sure to replace it on all of the commands below.
 
 And secondly for holding our boot files:
 
@@ -185,7 +188,8 @@ This is for the `arm64` version, if your raspberry pi doesn’t support arm64 yo
 
 `https://downloads.raspberrypi.com/raspios_armhf/images/raspios_armhf-2024-11-19/2024-11-19-raspios-bookworm-armhf.img.xz`
 
-> Warning ⚠️: These are the latest versions of the images at the time of writing. Before following the next steps please visit https://www.raspberrypi.com/software/operating-systems/, right click the appropriate download button and get the latest image link.
+> [!WARNING]
+> These are the latest versions of the images at the time of writing. Before following the next steps please visit https://www.raspberrypi.com/software/operating-systems/, right click the appropriate download button and get the latest image link.
 
 Now it’s time to extract it with:
 
@@ -195,7 +199,8 @@ And now create some loop devices from our image with:
 
 `kpartx -av 2024-11-19-raspios-bookworm-arm64.img`
 
-> Note ✏️: If you get `bash: kpartx: command not found` you can install it with `apt install -y kpartx`
+> [!NOTE]
+> If you get `bash: kpartx: command not found` you can install it with `apt install -y kpartx`
 
 Now it’s time to mount our loop devices, this can be done by firstly creating our mountpoints:
 
@@ -249,7 +254,8 @@ Then we need to create our exports:
 
 `echo "/srv/nfs/pi4-1 *(rw,sync,no_subtree_check,no_root_squash)" | tee -a /etc/exports`
 
-> Note ✏️: You can replace the asterisk (`*`) with the IP that your router gives to your pi so only this pi can access this filesystem. To get your pi’s IP, hook it up without an SD card to a monitor with an ethernet cable attached and look for `YI_ADDR`
+> [!NOTE]
+> You can replace the asterisk (`*`) with the IP that your router gives to your pi so only this pi can access this filesystem. To get your pi’s IP, hook it up without an SD card to a monitor with an ethernet cable attached and look for `YI_ADDR`
 
 Finally we need to restart all services to detect the new files:
 

@@ -7,9 +7,11 @@ author: Stavros
 
 Sooo, a lot of things have changed in Raspberry Pi OS since the buster version that the Hyperpixel screen was originally configured to work with. To be more specific there have been a lot of major changes including new kernels, rewritten parts of the desktop and the most important, the change to Wayland from x11. Pimoroni has tried its best to maintain compatibility with all these changes and they have managed to get the screen working, but by working we mean that the screen displays the desktop, that’s where they left the rest for us. I have spent a lot of time trying to create the optimal setup because I refuse to buy the official 7 inch display due to how heavy and big it is. So let me show you how I set up my Raspberry Pi 5 with the Hyperpixel 4’ inch display to have the best experience.
 
-> Note 📝: This blog post is about the October 22nd 2024 release of Raspberry Pi OS, which switched from the wayfire compositor to the labwc one.
+> [!NOTE]
+> This blog post is about the October 22nd 2024 release of Raspberry Pi OS, which switched from the wayfire compositor to the labwc one.
 
-> Note 📝: I recommend you use a physical keyboard and mouse instead of a VNC connection because of the rotations the screen will do and the changes that will happen to the cursor.
+> [!NOTE]
+> I recommend you use a physical keyboard and mouse instead of a VNC connection because of the rotations the screen will do and the changes that will happen to the cursor.
 
 ## Changes in `config.txt`
 
@@ -41,7 +43,8 @@ Brightness: `100%` (should be the default one)
 
 When you are done click Apply, the screen should rotate along with the touch and the Screen Configuration tool will show you a small popup with a countdown asking you to click OK if everything is good, there just click OK.
 
-> Note 📝: If you are using VNC your cursor will get inverted when you click apply so you will have to close the connection and reconnect and then you can click OK in the popup.
+> [!NOTE]
+> If you are using VNC your cursor will get inverted when you click apply so you will have to close the connection and reconnect and then you can click OK in the popup.
 
 And we are almost done.
 

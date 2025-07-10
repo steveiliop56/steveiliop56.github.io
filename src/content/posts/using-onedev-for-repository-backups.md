@@ -86,7 +86,8 @@ jobs:
     timeout: 3600
 ```
 
-> Warning ⚠️: Make sure to replace the workflow values with your own values.
+> [!WARNING]
+> Make sure to replace the workflow values with your own values.
 
 It is completely different from Github Workflows but it gets the job done. The only issue is that when you run commands and install packages, you have to do everything in one step else everything that's not in your current working directory will be deleted. No problem though, it works perfectly. Let me explain what it does:
 
