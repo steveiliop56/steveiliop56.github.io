@@ -27,4 +27,4 @@ Documentation was undoubtably the hardest part of this project, I needed to writ
 
 ## Conclusion
 
-All in all, Tinyauth is my favorite project so far, it makes the authentication space in homelab fast and easy. Feel free to check it out in Github [here](https://github.com/steveiliop56/tinyauth), I also made a [Discord server](https://discord.gg/gWpzrksk) so we can chat about self-hosting and fix your Tinyauth issues. That’s all for now, have fun!
+All in all, Tinyauth is my favorite project so far, it makes the authentication space in homelab fast and easy. Feel free to check it out in Github [here](https://github.com/steveiliop56/tinyauth), I also made a [Discord server](https://discord.com/invite/eHzVaCzRRd) so we can chat about self-hosting and fix your Tinyauth issues. That’s all for now, have fun!
