@@ -15,7 +15,7 @@ const { page } = Astro.props;
   {
     page.url.prev && (
       <a href={page.url.prev}>
-        <div class="flex flex-row gap-2 drop-shadow-sm bg-neutral-100 dark:bg-neutral-950 border-[0.5px] border-neutral-200 dark:border-neutral-800 rounded-full hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors py-3 px-4 justify-center items-center">
+        <div class="flex flex-row gap-2 drop-shadow-sm bg-neutral-50 dark:bg-neutral-950 border-[0.5px] border-neutral-200 dark:border-neutral-800 rounded-full hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors py-3 px-4 justify-center items-center">
           <Icon name="tabler:arrow-left" class="w-4 h-4 text-lg font-medium" />
           <p class="text-md font-medium">Previous</p>
         </div>
@@ -25,7 +25,7 @@ const { page } = Astro.props;
   {
     page.url.next && (
       <a href={page.url.next}>
-        <div class="flex flex-row gap-2 drop-shadow-sm bg-neutral-100 dark:bg-neutral-950 border-[0.5px] border-neutral-200 dark:border-neutral-800 rounded-full hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors py-3 px-4 justify-center items-center">
+        <div class="flex flex-row gap-2 drop-shadow-sm bg-neutral-50 dark:bg-neutral-950 border-[0.5px] border-neutral-200 dark:border-neutral-800 rounded-full hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors py-3 px-4 justify-center items-center">
           <p class="text-md font-medium">Next</p>
           <Icon name="tabler:arrow-right" class="w-4 h-4 text-lg font-medium" />
         </div>
