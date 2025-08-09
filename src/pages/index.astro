@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { cn } from "../lib/utils";
 ---
 
 <script>
@@ -25,7 +26,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout title="Home">
   <div class="flex flex-col items-center justify-center">
-    <div class="flex flex-col items-center text-center gap-4">
+    <div class="fixed h-dvh w-full">
+      <div
+        class={cn(
+          "absolute inset-0",
+          "[background-size:40px_40px]",
+          "[background-image:linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)]",
+          "dark:[background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]",
+        )}
+      >
+      </div>
+      <div
+        class="absolute inset-0 bg-neutral-50 dark:bg-neutral-950 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,#0a0a0a)] dark:[mask-image:radial-gradient(ellipse_at_center,transparent_20%,#fafafa)]"
+      >
+      </div>
+    </div>
+    <div class="relative z-10 flex flex-col items-center text-center gap-4">
       <img
         src="/profile.png"
         alt="Profile image"
