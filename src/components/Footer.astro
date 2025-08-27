@@ -1,36 +1,15 @@
 ---
-import FooterLink from "./FooterLink.astro";
-
 const date = new Date().getFullYear();
 ---
 
-<footer>
-  <div
-    class="flex flex-col justify-center items-center p-4 gap-2 relative z-10"
-  >
-    <div class="flex flex-col gap-1 items-center justify-center">
-      <p class="font-medium">
-        Copyright {date} Doesmycode.work
-      </p>
-      <p>
-        Powered by <a
-          class="text-blue-600 dark:text-blue-400 hover:opacity-80 underline"
-          href="https://astro.build">Astro</a
-        >
-      </p>
-    </div>
-    <div class="flex flex-row gap-1 items-center justify-center">
-      <FooterLink
-        title="Github"
-        icon="tabler:brand-github"
-        link="https://github.com/steveiliop56"
-      />
-      <FooterLink
-        title="Email"
-        icon="tabler:mail"
-        link="mailto:steve@doesmycode.work"
-      />
-      <FooterLink title="RSS" icon="tabler:rss" link="/rss.xml" />
-    </div>
-  </div>
+<footer class="w-full text-center mb-4">
+  <p class="font-medium">
+    Copyright {date} Doesmycode.work
+  </p>
+  <p>
+    Powered by <a
+      class="text-blue-600 dark:text-blue-400 hover:opacity-80 underline mt-2"
+      href="https://astro.build">Astro</a
+    >
+  </p>
 </footer>

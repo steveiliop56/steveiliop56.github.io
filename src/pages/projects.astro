@@ -2,48 +2,54 @@
 import ProjectCard from "../components/ProjectCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-interface Projects {
+interface Project {
   name: string;
   description: string;
   repo: string;
+  language: string;
+  color: string;
 }
 
-const projects: Projects[] = [
+const projects: Project[] = [
   {
     name: "Runtipi",
     repo: "runtipi/runtipi",
     description:
       "Runtipi is a homeserver for everyone! One command setup, one click installs for your favorites self-hosted apps.",
+    language: "TypeScript",
+    color: "sky-800",
   },
   {
     name: "Tinyauth",
     repo: "steveiliop56/tinyauth",
     description: "The simplest way to protect your apps with a login screen.",
+    language: "Go",
+    color: "sky-500",
   },
   {
     name: "Tipimate",
     repo: "steveiliop56/tipimate",
     description:
       "The easiest way to get notified about updates for your Runtipi apps!",
+    language: "Go",
+    color: "sky-500",
   },
   {
     name: "Website",
     repo: "steveiliop56/steveiliop56.github.io",
     description: "My personal website.",
+    language: "Astro",
+    color: "orange-600",
   },
 ];
 ---
 
 <BaseLayout title="Projects">
-  <div class="flex flex-col p-4 justify-center items-center">
-    <div class="flex flex-col gap-4 items-stretch">
-      <p class="text-4xl font-bold">Projects</p>
-      <p>
-        I have worked on a lot of project but this is a list of my favorites.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {projects.map((project) => <ProjectCard {...project} />)}
-      </div>
+  <div class="p-4 flex flex-col items-stretch">
+    <h2 class="text-3xl font-semibold">Projects</h2>
+    <p class="mt-2">Here are some of my favorite projects.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      {projects.map((project) => <ProjectCard {...project} />)}
     </div>
   </div>
 </BaseLayout>

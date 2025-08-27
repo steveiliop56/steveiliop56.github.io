@@ -1,6 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { cn } from "../lib/utils";
 ---
 
 <script>
@@ -8,10 +8,10 @@ import { cn } from "../lib/utils";
 
   document.addEventListener("astro:page-load", async () => {
     const words = [
-      "Full Stack Developer",
-      "Raspberry Pi Enthusiast",
-      "Reckless Engineer",
-      "Basketball Lover",
+      "a full stack developer.",
+      "a raspberry pi enthusiast.",
+      "a reckless engineer.",
+      "a basketball lover.",
     ];
 
     const typewriterElement = document.getElementById("typewriter");
@@ -25,54 +25,45 @@ import { cn } from "../lib/utils";
 </script>
 
 <BaseLayout title="Home">
-  <div class="flex flex-col items-center justify-center">
-    <div class="fixed h-dvh w-full">
-      <div
-        class={cn(
-          "absolute inset-0",
-          "[background-size:40px_40px]",
-          "[background-image:linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)]",
-          "dark:[background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]",
-        )}
+  <img src="/profile.png" alt="Profile image" class="size-44 rounded-full" />
+  <div class="flex flex-col items-center text-center gap-1 mt-4">
+    <h2 class="text-xl font-semibold text-neutral-600 dark:text-neutral-400">
+      Hello, I'm
+    </h2>
+    <h2 class="text-4xl font-semibold">Stavros</h2>
+    <div>
+      <h2
+        class="text-2xl h-8 font-semibold text-neutral-600 dark:text-neutral-400 inline-block align-middle"
+        id="typewriter"
       >
-      </div>
+      </h2>
       <div
-        class="absolute inset-0 bg-neutral-50 dark:bg-neutral-950 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,#0a0a0a)] dark:[mask-image:radial-gradient(ellipse_at_center,transparent_20%,#fafafa)]"
+        class="h-8 w-0.5 bg-neutral-700 dark:bg-neutral-300 animate-blink rounded-sm inline-block align-middle"
       >
       </div>
     </div>
-    <div class="relative z-10 flex flex-col items-center text-center gap-4">
-      <img
-        src="/profile.png"
-        alt="Profile image"
-        class="size-44 rounded-full"
-      />
-      <div class="flex flex-col items-center text-center">
-        <h1 class="text-3xl font-semibold">Hello, I am Stavros a</h1>
-        <div class="flex flex-row items-center justify-center gap-0.5">
-          <h1
-            class="text-3xl h-9 font-semibold text-transparent bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text w-fit"
-            id="typewriter"
-          >
-          </h1>
-          <div
-            class="h-[1.875rem] w-0.5 bg-neutral-800 dark:bg-neutral-300 animate-blink rounded-sm"
-          >
-          </div>
-        </div>
+  </div>
+  <div class="mt-4 flex flex-row gap-2">
+    <a href="https://github.com/steveiliop56">
+      <div
+        class="border border-neutral-200 dark:border-neutral-800 rounded-full p-2 hover:opacity-80"
+      >
+        <Icon name="tabler:brand-github" aria-label="Github" class="size-6" />
       </div>
-      <div class="flex flex-row gap-2 items-center justify-center">
-        <a
-          href="/about"
-          class="drop-shadow-sm bg-neutral-50 dark:bg-neutral-950 border-[0.5px] border-neutral-200 dark:border-neutral-800 rounded-lg py-2 px-3 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors"
-          >About</a
-        >
-        <a
-          href="/posts"
-          class="drop-shadow-sm bg-neutral-50 dark:bg-neutral-950 border-[0.5px] border-neutral-200 dark:border-neutral-800 rounded-lg py-2 px-3 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors"
-          >Posts</a
-        >
+    </a>
+    <a href="mailto:steve@doesmycode.work">
+      <div
+        class="border border-neutral-200 dark:border-neutral-800 rounded-full p-2 hover:opacity-80"
+      >
+        <Icon name="tabler:mail" aria-label="Email" class="size-6" />
       </div>
-    </div>
+    </a>
+    <a href="https://social.doesmycode.work/@steveiliop56">
+      <div
+        class="border border-neutral-200 dark:border-neutral-800 rounded-full p-2 hover:opacity-80"
+      >
+        <Icon name="ph:fediverse-logo" aria-label="Fediverse" class="size-6" />
+      </div>
+    </a>
   </div>
 </BaseLayout>

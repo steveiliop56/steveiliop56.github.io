@@ -4,13 +4,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout title="Internal Server Error">
   <div
-    class="flex flex-col flex-1 gap-2 p-4 items-center justify-center text-center"
+    class="flex flex-col gap-2 p-4 items-center justify-center text-center max-w-md"
   >
-    <p class="text-2xl font-bold">Internal Server Error</p>
-    <p class="text-lg">
+    <p class="text-3xl font-semibold">Internal Server Error</p>
+    <p class="text-lg text-neutral-600 dark:text-neutral-400">
       Probably my code doesn't work, so why don't you try to <a
         href="javascript:location.reload();"
-        class="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors underline"
+        class="text-blue-600 dark:text-blue-500 hover:opacity-80 underline"
       >
         refresh
       </a>

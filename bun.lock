@@ -9,6 +9,7 @@
         "@astrojs/sitemap": "^3.2.1",
         "@astrojs/tailwind": "^6.0.2",
         "@iconify-json/iconoir": "^1.2.7",
+        "@iconify-json/ph": "^1.2.2",
         "astro": "^4.16.8",
         "astro-icon": "^1.1.5",
         "clsx": "^2.1.1",
@@ -159,6 +160,8 @@
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.21.5", "", { "os": "win32", "cpu": "x64" }, "sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw=="],
 
     "@iconify-json/iconoir": ["@iconify-json/iconoir@1.2.7", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-UDlx2WeWHqopfKRsjOta6fn/KkOhF0MmI2AxoYfakqtMLlznkTnrtY9QVuXZzsbvk+Gyavq2L39VjhcxGbt+LA=="],
+
+    "@iconify-json/ph": ["@iconify-json/ph@1.2.2", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-PgkEZNtqa8hBGjHXQa4pMwZa93hmfu8FUSjs/nv4oUU6yLsgv+gh9nu28Kqi8Fz9CCVu4hj1MZs9/60J57IzFw=="],
 
     "@iconify-json/tabler": ["@iconify-json/tabler@1.2.19", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-JDeQTQxHD8KE12pAbPVHX1WFVOPq8D0XfRb/LwYHwGwYE0HP9OIjJ//TKxS1Gt++RirYu6Xsx+Jm5LA5KbykoA=="],
 

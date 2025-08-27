@@ -17,15 +17,12 @@ const { page }: { page: Page } = Astro.props;
 ---
 
 <BaseLayout title="Posts">
-  <div class="flex flex-col p-4 items-center">
-    <div class="flex flex-col gap-4 items-start">
-      <a href="/posts">
-        <p class="text-2xl font-bold">Posts</p>
-      </a>
-      <div class="flex flex-col gap-2">
-        {page.data.map((post) => <PostCard post={post} />)}
-      </div>
-      <Pagination page={page} />
+  <div class="flex flex-col p-4 items-start min-w-full">
+    <h2 class="text-3xl font-semibold">Posts</h2>
+    <p class="mt-2">I occasionally write some posts.</p>
+    <div class="flex flex-col gap-2 mt-4">
+      {page.data.map((post) => <PostCard post={post} />)}
     </div>
+    <Pagination page={page} />
   </div>
 </BaseLayout>

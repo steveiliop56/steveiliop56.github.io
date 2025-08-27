@@ -21,10 +21,16 @@ import { Icon } from "astro-icon/components";
 </script>
 
 <button
-  class="flex justify-center items-center hover:cursor-pointer transition duration-200 ease-in-out"
+  class="align-middle hover:cursor-pointer transition duration-200 ease-in-out"
   id="themeToggle"
   aria-label="Toggle theme"
 >
-  <Icon class="hidden dark:block w-6 h-6" name="tabler:sun" />
-  <Icon class="dark:hidden w-6 h-6" name="tabler:moon" />
+  <Icon
+    class="hidden dark:block w-6 h-6 m-auto hover:opacity-80"
+    name="tabler:sun"
+  />
+  <Icon
+    class="dark:hidden w-6 h-6 m-auto hover:opacity-80"
+    name="tabler:moon"
+  />
 </button>
