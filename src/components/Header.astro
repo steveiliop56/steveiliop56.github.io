@@ -4,10 +4,10 @@ import { Icon } from "astro-icon/components";
 import ThemeSwitch from "./ThemeSwitch.astro";
 
 const navItems = [
-  { link: "/", title: "Home" },
-  { link: "/posts", title: "Posts" },
-  { link: "/about", title: "About" },
-  { link: "/projects", title: "Projects" },
+  { href: "/", text: "Home" },
+  { href: "/posts", text: "Posts" },
+  { href: "/about", text: "About" },
+  { href: "/projects", text: "Projects" },
 ];
 ---
 
@@ -41,16 +41,18 @@ const navItems = [
 </script>
 
 <header
-  class="sticky top-0 z-20 bg-opacity-30 dark:bg-opacity-30 backdrop-filter backdrop-blur-lg bg-neutral-50 dark:bg-neutral-950 border-b border-neutral-200 dark:border-neutral-800"
+  class="bg-neutral-50 dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 w-full"
 >
   <div class="flex items-center justify-between p-4">
-    <div class="flex flex-row gap-2">
-      <a href="/" class="text-2xl font-bold">Doesmycode.work</a>
+    <div>
+      <a href="/" class="text-2xl font-bold mr-2 inline-block align-middle"
+        >Doesmycode.work</a
+      >
       <ThemeSwitch />
     </div>
-    <div class="hidden md:flex flex-row gap-4">
+    <nav class="hidden md:flex flex-row gap-4">
       {navItems.map((item) => <HeaderLink item={item} />)}
-    </div>
+    </nav>
     <div class="flex md:hidden">
       <Icon
         id="menu-open"
@@ -60,7 +62,7 @@ const navItems = [
       />
       <div
         id="menu"
-        class="fixed top-0 left-0 h-dvh inset-0 bg-neutral-50 dark:bg-neutral-950 flex-col gap-4 items-center justify-center hidden"
+        class="fixed z-20 top-0 left-0 h-dvh inset-0 bg-neutral-100 dark:bg-neutral-900 flex-col gap-4 items-center justify-center hidden"
       >
         <Icon
           id="menu-close"

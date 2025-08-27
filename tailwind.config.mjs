@@ -18,4 +18,5 @@ export default {
   plugins: [require("@tailwindcss/typography")],
   darkMode: "class",
   applyBaseStyle: false,
+  safelist: ["bg-orange-600", "bg-sky-500", "bg-sky-800"],
 };

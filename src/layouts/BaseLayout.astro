@@ -7,6 +7,20 @@ import { ViewTransitions } from "astro:transitions";
 const { title } = Astro.props;
 ---
 
+<html lang="en">
+  <head>
+    <BaseHeader title={title} />
+    <ViewTransitions />
+  </head>
+  <body
+    class="bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 transition-colors ease-in-out duration-150 min-h-dvh flex flex-col justify-between items-center"
+  >
+    <Header />
+    <div class="flex-1 flex flex-col items-center justify-center"><slot /></div>
+    <Footer />
+  </body>
+</html>
+
 <script is:inline>
   function applyTheme() {
     const theme = (() => {
@@ -141,19 +155,3 @@ const { title } = Astro.props;
     color: var(--fgColor-danger, var(--color-danger-fg));
   }
 </style>
-
-<html lang="en">
-  <head>
-    <BaseHeader title={title} />
-    <ViewTransitions />
-  </head>
-  <body
-    class="bg-neutral-50 dark:bg-neutral-950 text-neutral-800 dark:text-neutral-300 min-h-dvh flex flex-col justify-between"
-  >
-    <Header />
-    <div class="flex-1 flex flex-col items-center justify-center overflow-hidden">
-      <slot />
-    </div>
-    <Footer />
-  </body>
-</html>
