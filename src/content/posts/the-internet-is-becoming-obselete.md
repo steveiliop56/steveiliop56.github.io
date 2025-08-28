@@ -5,7 +5,7 @@ publishedOn: 2025-08-08
 author: Stavros
 ---
 
-You probably have seen the recent movement of governments to mass surveillance with the idea of "protecting children". Since we still have the right to free speech I have my own take on it too.
+You have probably seen the recent movement of governments to mass surveillance with the idea of "protecting children". Since we still have the right to free speech I have my own take on it too.
 
 ## More and more tracking
 
