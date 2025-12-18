@@ -7,7 +7,7 @@ import type { Page } from "astro";
 
 export async function getStaticPaths({ paginate }: { paginate: Function }) {
   const posts = (await getCollection("posts")).sort(
-    (a, b) => Date.parse(b.data.publishedOn) - Date.parse(a.data.publishedOn),
+    (a, b) => b.data.publishedOn.getTime() - a.data.publishedOn.getTime(),
   );
 
   return paginate(posts, { pageSize: 5 });

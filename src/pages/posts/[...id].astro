@@ -7,7 +7,7 @@ import Toc from "../../components/Toc.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("posts")).sort(
-    (a, b) => Date.parse(b.data.publishedOn) - Date.parse(a.data.publishedOn),
+    (a, b) => b.data.publishedOn.getTime() - a.data.publishedOn.getTime(),
   );
 
   return posts.map((post) => ({
@@ -21,6 +21,10 @@ type Props = CollectionEntry<"posts">;
 const post = Astro.props;
 
 const { Content, headings } = await render(post);
+
+if (!post.body) {
+  throw new Error("Post body is empty");
+}
 
 const words = post.body.split(" ").length;
 const readTime = Math.round(words / 200);

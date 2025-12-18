@@ -27,10 +27,10 @@ const projects: Project[] = [
     color: "sky-500",
   },
   {
-    name: "Tipimate",
-    repo: "steveiliop56/tipimate",
+    name: "Spow",
+    repo: "steveiliop56/spow",
     description:
-      "The easiest way to get notified about updates for your Runtipi apps!",
+      "A simple and good looking (subjective) Spotify now playing screen.",
     language: "Go",
     color: "sky-500",
   },
@@ -47,7 +47,7 @@ const projects: Project[] = [
 <BaseLayout title="Projects">
   <div class="p-4 md:p-0 items-stretch">
     <h2 class="text-3xl font-semibold">Projects</h2>
-    <p class="mt-2">Here are some of my favorite projects.</p>
+    <p class="mt-2">Below are some of my favorite projects.</p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
       {projects.map((project) => <ProjectCard {...project} />)}
     </div>

@@ -5,9 +5,9 @@ const words = post.body.split(" ").length;
 const readTime = Math.round(words / 200);
 ---
 
-<a href={`/posts/${post.slug}`}>
+<a href={`/posts/${post.id}`}>
   <div
-    class="hover:opacity-80 border border-neutral-200 dark:border-neutral-800 rounded-md p-4 max-w-full break-words drop-shadow-sm"
+    class="hover:opacity-80 border border-neutral-200 dark:border-neutral-800 rounded-md p-4 max-w-full break-words"
   >
     <p class="font-semibold text-lg">
       {post.data.title}

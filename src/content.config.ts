@@ -8,8 +8,8 @@ const posts = defineCollection({
     title: z.string(),
     description: z.string(),
     author: z.string(),
-    publishedOn: z.coerce.date(),
-    updatedOn: z.coerce.date().optional(),
+    publishedOn: z.date(),
+    updatedOn: z.date().optional(),
   }),
 });
 

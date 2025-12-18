@@ -15,7 +15,7 @@ const { page } = Astro.props;
   {
     page.url.prev && (
       <a href={page.url.prev}>
-        <div class="drop-shadow-sm border border-neutral-800 rounded-full py-3 px-4 hover:opacity-80">
+        <div class="border border-neutral-200 dark:border-neutral-800 rounded-full py-3 px-4 hover:opacity-80">
           <Icon
             name="tabler:arrow-left"
             class="w-4 h-4 text-lg font-medium inline-block align-middle"
@@ -30,7 +30,7 @@ const { page } = Astro.props;
   {
     page.url.next && (
       <a href={page.url.next}>
-        <div class="drop-shadow-sm border border-neutral-800 rounded-full py-3 px-4 hover:opacity-80">
+        <div class="border border-neutral-200 dark:border-neutral-800 rounded-full py-3 px-4 hover:opacity-80">
           <p class="text-md font-medium inline-block align-middle">Next</p>
           <Icon
             name="tabler:arrow-right"
