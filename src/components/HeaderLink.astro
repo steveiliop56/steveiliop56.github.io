@@ -1,19 +1,12 @@
 ---
-import clsx from "clsx";
-
 const {
   item: { href, text },
 } = Astro.props;
-
-const isActive = Astro.url.pathname.split("/")[1] === href.split("/")[1];
 ---
 
 <a
   href={href}
-  class={clsx(
-    "font-medium text-lg hover:text-neutral-700 dark:hover:text-neutral-200 hover:opacity-80",
-    isActive && "underline underline-offset-2",
-  )}
+  class="font-medium text-lg hover:text-neutral-700 dark:hover:text-neutral-200 hover:opacity-80"
 >
   {text}
 </a>

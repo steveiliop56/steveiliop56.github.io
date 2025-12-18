@@ -4,9 +4,9 @@ import BaseLayout from "./BaseLayout.astro";
 ---
 
 <BaseLayout title="About">
-  <div class="flex flex-col p-4 justify-center items-center">
+  <div class="p-4 md:p-0 max-w-screen-md">
     <article
-      class="prose dark:prose-invert prose-neutral prose-pre:max-w-[85vw] md:prose-pre:max-w-none prose-code:break-all prose-a:break-all max-w-screen-md"
+      class="prose dark:prose-invert prose-neutral prose-code:break-all prose-a:break-all prose-headings:my-4 prose-p:my-0"
     >
       <slot />
     </article>

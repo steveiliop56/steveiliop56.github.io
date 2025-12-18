@@ -11,7 +11,7 @@ const { title } = Astro.props;
     <BaseHeader title={title} />
   </head>
   <body
-    class="bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 transition-colors ease-in-out duration-150 min-h-dvh flex flex-col justify-between items-center"
+    class="bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 transition-colors ease-in-out duration-150 min-h-dvh flex flex-col"
   >
     <Header />
     <div class="flex-1 flex flex-col items-center justify-center"><slot /></div>
@@ -89,8 +89,8 @@ const { title } = Astro.props;
     border-left: 0.25em solid
       var(--borderColor-default, var(--color-border-default));
     color: inherit;
-    margin-bottom: 16px;
-    padding: 0.5rem 1em;
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
   }
   .markdown-alert > :last-child {
     margin-bottom: 0 !important;
