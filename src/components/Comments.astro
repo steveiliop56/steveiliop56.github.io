@@ -4,71 +4,66 @@ const giscusEnable = import.meta.env.VITE_GISCUS_ENABLE;
 
 <script>
   // Credits to: https://github.com/giscus/giscus/issues/336#issuecomment-1214366281
-  document.addEventListener("astro:page-load", () => {
-    function getGiscusTheme() {
-      return document.documentElement.classList.contains("dark")
-        ? "noborder_gray"
-        : "noborder_light";
-    }
+  function getGiscusTheme() {
+    return document.documentElement.classList.contains("dark")
+      ? "noborder_gray"
+      : "noborder_light";
+  }
 
-    function sendGiscusMessage<T>(message: T) {
-      const iframe = document.querySelector<HTMLIFrameElement>(
-        "iframe.giscus-frame",
-      );
-      if (!iframe || !iframe.contentWindow) return;
-      iframe.contentWindow.postMessage(
-        { giscus: message },
-        "https://giscus.app",
-      );
-    }
+  function sendGiscusMessage<T>(message: T) {
+    const iframe = document.querySelector<HTMLIFrameElement>(
+      "iframe.giscus-frame",
+    );
+    if (!iframe || !iframe.contentWindow) return;
+    iframe.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
+  }
 
-    function setGiscusTheme() {
-      sendGiscusMessage({
-        setConfig: {
-          theme: getGiscusTheme(),
-        },
-      });
-    }
+  function setGiscusTheme() {
+    sendGiscusMessage({
+      setConfig: {
+        theme: getGiscusTheme(),
+      },
+    });
+  }
 
-    class AstroGiscus extends HTMLElement {
-      connectedCallback() {
-        const enable = this.dataset.giscusEnable === "true";
+  class AstroGiscus extends HTMLElement {
+    connectedCallback() {
+      const enable = this.dataset.giscusEnable === "true";
 
-        if (enable) {
-          const giscusScript = document.createElement("script");
+      if (enable) {
+        const giscusScript = document.createElement("script");
 
-          const giscusAttributes = {
-            src: "https://giscus.app/client.js",
-            "data-repo": "steveiliop56/steveiliop56.github.io",
-            "data-repo-id": "R_kgDOMiZ-xg",
-            "data-category": "Comments",
-            "data-category-id": "DIC_kwDOMiZ-xs4Chz16",
-            "data-mapping": "pathname",
-            "data-strict": "0",
-            "data-reactions-enabled": "1",
-            "data-emit-metadata": "0",
-            "data-input-position": "bottom",
-            "data-theme": getGiscusTheme(),
-            "data-lang": "en",
-            "data-loading": "lazy",
-            crossorigin: "anonymous",
-          };
+        const giscusAttributes = {
+          src: "https://giscus.app/client.js",
+          "data-repo": "steveiliop56/steveiliop56.github.io",
+          "data-repo-id": "R_kgDOMiZ-xg",
+          "data-category": "Comments",
+          "data-category-id": "DIC_kwDOMiZ-xs4Chz16",
+          "data-mapping": "pathname",
+          "data-strict": "0",
+          "data-reactions-enabled": "1",
+          "data-emit-metadata": "0",
+          "data-input-position": "bottom",
+          "data-theme": getGiscusTheme(),
+          "data-lang": "en",
+          "data-loading": "lazy",
+          crossorigin: "anonymous",
+        };
 
-          Object.entries(giscusAttributes).forEach(([key, value]) =>
-            giscusScript.setAttribute(key, value),
-          );
+        Object.entries(giscusAttributes).forEach(([key, value]) =>
+          giscusScript.setAttribute(key, value),
+        );
 
-          document.body.appendChild(giscusScript);
+        document.body.appendChild(giscusScript);
 
-          const toggle = document.getElementById("themeToggle");
-          toggle?.addEventListener("click", setGiscusTheme);
-        }
+        const toggle = document.getElementById("themeToggle");
+        toggle?.addEventListener("click", setGiscusTheme);
       }
     }
+  }
 
-    customElements.get("astro-giscus") ||
-      customElements.define("astro-giscus", AstroGiscus);
-  });
+  customElements.get("astro-giscus") ||
+    customElements.define("astro-giscus", AstroGiscus);
 </script>
 
 <astro-giscus data-giscus-enable={giscusEnable}></astro-giscus>

@@ -6,22 +6,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <script>
   import { Typewriter } from "../lib/typewriter";
 
-  document.addEventListener("astro:page-load", async () => {
-    const words = [
-      "a full stack developer.",
-      "a raspberry pi enthusiast.",
-      "a reckless engineer.",
-      "a basketball lover.",
-    ];
+  const words = [
+    "a full stack developer.",
+    "a raspberry pi enthusiast.",
+    "a reckless engineer.",
+    "a basketball lover.",
+  ];
 
-    const typewriterElement = document.getElementById("typewriter");
-    const typewriter = new Typewriter(words);
+  const typewriterElement = document.getElementById("typewriter");
+  const typewriter = new Typewriter(words);
 
-    if (typewriterElement && !typewriter.hasElement) {
-      typewriter.setElement(typewriterElement);
-      typewriter.start();
-    }
-  });
+  if (typewriterElement && !typewriter.hasElement) {
+    typewriter.setElement(typewriterElement);
+    typewriter.start();
+  }
 </script>
 
 <BaseLayout title="Home">

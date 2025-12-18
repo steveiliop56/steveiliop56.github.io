@@ -3,34 +3,32 @@ import { Icon } from "astro-icon/components";
 ---
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const scrollToTop = document.getElementById("scrollToTop");
+  const scrollToTop = document.getElementById("scrollToTop");
 
-    window.onscroll = function () {
-      handleScroll();
-    };
+  window.onscroll = function () {
+    handleScroll();
+  };
 
-    function handleScroll() {
-      if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
-      ) {
-        scrollToTop?.classList.remove("hidden");
-      } else {
-        scrollToTop?.classList.add("hidden");
-      }
+  function handleScroll() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      scrollToTop?.classList.remove("hidden");
+    } else {
+      scrollToTop?.classList.add("hidden");
     }
+  }
 
-    function backToTop() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setTimeout(() => {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      }, 500);
-    }
+  function backToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }, 500);
+  }
 
-    scrollToTop?.addEventListener("click", backToTop);
-  });
+  scrollToTop?.addEventListener("click", backToTop);
 </script>
 
 <button

@@ -6,48 +6,46 @@ const { repo, description, name, language, color } = Astro.props;
 ---
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    class AstroProject extends HTMLElement {
-      connectedCallback() {
-        const repo = this.dataset.repo;
-        const formatter = new Intl.NumberFormat("en", {
-          notation: "compact",
-          compactDisplay: "short",
-        });
+  class AstroProject extends HTMLElement {
+    connectedCallback() {
+      const repo = this.dataset.repo;
+      const formatter = new Intl.NumberFormat("en", {
+        notation: "compact",
+        compactDisplay: "short",
+      });
 
-        type RepoData = {
-          stargazers_count: number;
-          forks_count: number;
-        };
+      type RepoData = {
+        stargazers_count: number;
+        forks_count: number;
+      };
 
-        async function getRepoData() {
-          const res = await fetch(`https://api.github.com/repos/${repo}`);
-          const data = await res.json();
-          return data as RepoData;
-        }
-
-        async function updateData() {
-          const data = await getRepoData();
-          const starsElement = document.getElementById(`${repo}-stars`);
-          if (starsElement) {
-            starsElement.innerText = formatter
-              .format(data.stargazers_count)
-              .toLocaleLowerCase();
-          }
-          const forksElement = document.getElementById(`${repo}-forks`);
-          if (forksElement) {
-            forksElement.innerText = formatter
-              .format(data.forks_count)
-              .toLocaleLowerCase();
-          }
-        }
-
-        updateData();
+      async function getRepoData() {
+        const res = await fetch(`https://api.github.com/repos/${repo}`);
+        const data = await res.json();
+        return data as RepoData;
       }
-    }
 
-    customElements.define("astro-project", AstroProject);
-  });
+      async function updateData() {
+        const data = await getRepoData();
+        const starsElement = document.getElementById(`${repo}-stars`);
+        if (starsElement) {
+          starsElement.innerText = formatter
+            .format(data.stargazers_count)
+            .toLocaleLowerCase();
+        }
+        const forksElement = document.getElementById(`${repo}-forks`);
+        if (forksElement) {
+          forksElement.innerText = formatter
+            .format(data.forks_count)
+            .toLocaleLowerCase();
+        }
+      }
+
+      updateData();
+    }
+  }
+
+  customElements.define("astro-project", AstroProject);
 </script>
 
 <astro-project data-repo={repo}>
