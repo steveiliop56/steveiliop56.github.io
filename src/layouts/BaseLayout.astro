@@ -2,7 +2,6 @@
 import BaseHeader from "../components/BaseHeader.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import { ViewTransitions } from "astro:transitions";
 
 const { title } = Astro.props;
 ---
@@ -10,7 +9,6 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <BaseHeader title={title} />
-    <ViewTransitions />
   </head>
   <body
     class="bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 transition-colors ease-in-out duration-150 min-h-dvh flex flex-col justify-between items-center"

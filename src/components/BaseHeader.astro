@@ -6,30 +6,28 @@ const analyticsEnable = import.meta.env.VITE_ANALYTICS_ENABLE;
 ---
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    class AstroAnalytics extends HTMLElement {
-      connectedCallback() {
-        const enable = this.dataset.analyticsEnable === "true";
-        if (enable) {
-          const umamiAttributes = {
-            src: "https://analytics.doesmycode.work/script.js",
-            "data-website-id": "1940b296-a8c6-4663-bcb0-0ee20a0b7c97",
-          };
+  class AstroAnalytics extends HTMLElement {
+    connectedCallback() {
+      const enable = this.dataset.analyticsEnable === "true";
+      if (enable) {
+        const umamiAttributes = {
+          src: "https://analytics.doesmycode.work/script.js",
+          "data-website-id": "1940b296-a8c6-4663-bcb0-0ee20a0b7c97",
+        };
 
-          const umamiScript = document.createElement("script");
+        const umamiScript = document.createElement("script");
 
-          Object.entries(umamiAttributes).forEach(([key, value]) =>
-            umamiScript.setAttribute(key, value),
-          );
+        Object.entries(umamiAttributes).forEach(([key, value]) =>
+          umamiScript.setAttribute(key, value),
+        );
 
-          document.head.appendChild(umamiScript);
-        }
+        document.head.appendChild(umamiScript);
       }
     }
+  }
 
-    customElements.get("astro-analytics") ||
-      customElements.define("astro-analytics", AstroAnalytics);
-  });
+  customElements.get("astro-analytics") ||
+    customElements.define("astro-analytics", AstroAnalytics);
 </script>
 
 <meta charset="utf-8" />

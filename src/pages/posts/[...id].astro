@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ScrollToTopButton from "../../components/ScrollToTopButton.astro";
 import Comments from "../../components/Comments.astro";
@@ -10,13 +10,17 @@ export async function getStaticPaths() {
     (a, b) => Date.parse(b.data.publishedOn) - Date.parse(a.data.publishedOn),
   );
 
-  return posts.map((post) => ({ params: { slug: post.slug }, props: post }));
+  return posts.map((post) => ({
+    params: { id: post.id.replace(/\.md?$/, "") },
+    props: post,
+  }));
 }
 
 type Props = CollectionEntry<"posts">;
 
 const post = Astro.props;
-const { Content, headings } = await post.render();
+
+const { Content, headings } = await render(post);
 
 const words = post.body.split(" ").length;
 const readTime = Math.round(words / 200);
