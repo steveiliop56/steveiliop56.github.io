@@ -17,7 +17,7 @@
     "@iconify-json/iconoir": "^1.2.10",
     "@iconify-json/ph": "^1.2.2",
     "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.6",
+    "astro": "^5.16.15",
     "astro-icon": "^1.1.5",
     "clsx": "^2.1.1",
     "markdown-it": "^14.1.0",
