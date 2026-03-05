@@ -13,23 +13,23 @@
   "dependencies": {
     "@astrojs/check": "^0.9.6",
     "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/sitemap": "^3.7.0",
     "@iconify-json/iconoir": "^1.2.10",
     "@iconify-json/ph": "^1.2.2",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.6",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.18.0",
     "astro-icon": "^1.1.5",
     "clsx": "^2.1.1",
-    "markdown-it": "^14.1.0",
+    "markdown-it": "^14.1.1",
     "remark-github-blockquote-alert": "^2.0.1",
-    "sanitize-html": "^2.17.0",
-    "tailwind-merge": "^3.4.0",
-    "tailwindcss": "^4.1.18",
+    "sanitize-html": "^2.17.1",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@iconify-json/tabler": "^1.2.26",
-    "@tailwindcss/typography": "^0.5.15",
+    "@iconify-json/tabler": "^1.2.29",
+    "@tailwindcss/typography": "^0.5.19",
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1"
   }
