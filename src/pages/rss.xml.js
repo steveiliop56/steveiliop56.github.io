@@ -6,7 +6,7 @@ const parser = new MarkdownIt();
 
 export async function GET(context) {
   const posts = (await getCollection("posts")).sort(
-    (a, b) => Date.parse(b.data.publishedOn) - Date.parse(a.data.publishedOn),
+    (a, b) => b.data.publishedOn.getTime() - a.data.publishedOn.getTime(),
   );
   return rss({
     title: "Doesmycodework",
@@ -16,7 +16,7 @@ export async function GET(context) {
       title: post.data.title,
       pubDate: post.data.publishedOn,
       description: post.data.description,
-      link: `/posts/${post.slug}/`,
+      link: `/posts/${post.id.replace(/\.md?$/, "")}/`,
       content: sanitizeHtml(parser.render(post.body), {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
       }),
