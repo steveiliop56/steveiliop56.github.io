@@ -1,0 +1,52 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Layout from "@/layouts/base.astro";
+
+export async function getStaticPaths() {
+    const posts = (await getCollection("blog")).sort(
+        (a, b) => b.data.publishedOn.getTime() - a.data.publishedOn.getTime(),
+    );
+
+    return posts.map((post) => ({
+        params: { id: post.id.replace(/\.md?$/, "") },
+        props: post,
+    }));
+}
+
+const post = Astro.props;
+const { Content, headings } = await render(post);
+
+if (!Content || !post.body) {
+    throw new Error("Post content is missing");
+}
+
+const words = post.body.split(" ");
+const readTime = Math.round(words.length / 200);
+---
+
+<Layout>
+    <div class="p-8">
+        <div class="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
+            <span
+                >{
+                    post.data.publishedOn.toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                    })
+                }</span
+            >
+            <span class="mx-1">&#x2022</span>
+            <span>{readTime} min read</span>
+        </div>
+        <h1 class="font-bold text-2xl mb-2">{post.data.title}</h1>
+        <div class="mb-8 text-neutral-600 dark:text-neutral-400">
+            {post.data.description}
+        </div>
+        <article
+            class="prose dark:prose-invert prose-headings:mb-4 prose-headings:mt-4 prose-h1:text-xl prose-h2:text-lg prose-h3:text-md prose-h4:text-base prose-h5:text-base prose-h6:text-base prose-code:wrap-break-word prose-a:wrap-break-word"
+        >
+            <Content />
+        </article>
+    </div>
+</Layout>
