@@ -6,12 +6,15 @@ import Theme from "./theme.astro";
     <div
         class="flex flex-col md:flex-row items-start md:items-center md:justify-between gap-4 md:gap-0"
     >
-        <a href="/"
-            ><h1 class="hover:text-neutral-900 dark:hover:text-neutral-200">
-                Stavros <span class="text-blue-500">@steveiliop56</span>
-            </h1></a
-        >
+        <h1 class="hover:text-neutral-900 dark:hover:text-neutral-200">
+            Stavros <span class="text-blue-500">@steveiliop56</span>
+        </h1>
         <nav class="text-md flex flex-row items-center gap-4">
+            <a
+                href="/"
+                class="hover:text-neutral-900 dark:hover:text-neutral-200"
+                >Home</a
+            >
             <a
                 href="/projects"
                 class="hover:text-neutral-900 dark:hover:text-neutral-200"
@@ -21,11 +24,6 @@ import Theme from "./theme.astro";
                 href="/blog"
                 class="hover:text-neutral-900 dark:hover:text-neutral-200"
                 >Blog</a
-            >
-            <a
-                href="/contact"
-                class="hover:text-neutral-900 dark:hover:text-neutral-200"
-                >Contact</a
             >
             <Theme />
         </nav>
