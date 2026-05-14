@@ -1,0 +1,45 @@
+---
+const { title, description, image, repo, website } = Astro.props;
+---
+
+<div
+    class="rounded-lg border border-neutral-300 dark:border-neutral-800 overflow-hidden"
+>
+    {
+        image && (
+            <img
+                src={image}
+                alt="Tinyauth"
+                class="rounded-t-lg border-b border-b-neutral-300 dark:border-b-neutral-800"
+            />
+        )
+    }
+    <div class="p-4">
+        <div class="mb-2">
+            <h2 class="font-bold text-md mb-2">{title}</h2>
+            <p>
+                {description}
+            </p>
+        </div>
+        <div class="inline-flex flex-row gap-2">
+            <a
+                href={repo}
+                target="_blank"
+                class="italic underline hover:text-neutral-700 dark:hover:text-neutral-300"
+            >
+                GitHub
+            </a>
+            {
+                website && (
+                    <a
+                        href={website}
+                        target="_blank"
+                        class="italic underline hover:text-neutral-700 dark:hover:text-neutral-300"
+                    >
+                        Website
+                    </a>
+                )
+            }
+        </div>
+    </div>
+</div>

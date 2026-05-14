@@ -3,6 +3,7 @@ import Layout from "@/layouts/base.astro";
 import { Icon } from "astro-icon/components";
 import PostCard from "@/components/post-card.astro";
 import { getCollection } from "astro:content";
+import ProjectCard from "@/components/project-card.astro";
 
 const favoriteTechnologies = [
     {
@@ -105,40 +106,13 @@ posts.sort(
         <div class="text-neutral-800 dark:text-neutral-300">
             <h1 class="text-xl font-bold mb-2">Featured Project</h1>
             <div class="mb-4">I am currently working on...</div>
-            <div
-                class="rounded-lg border border-neutral-300 dark:border-neutral-800 overflow-hidden"
-            >
-                <img
-                    src="/tinyauth.png"
-                    alt="Tinyauth"
-                    class="rounded-t-lg border-b borded-b-neutral-300 dark:border-b-neutral-800"
-                />
-                <div class="p-4 rounded-b-lg">
-                    <div class="mb-2">
-                        <h2 class="font-bold text-md mb-2">Tinyauth</h2>
-                        <p>
-                            The tiniest authentication and authorization server
-                            you have ever seen.
-                        </p>
-                    </div>
-                    <div class="inline-flex flex-row gap-2">
-                        <a
-                            href="https://github.com/tinyauthapp/tinyauth"
-                            target="_blank"
-                            class="italic underline hover:text-neutral-700 dark:hover:text-neutral-300"
-                        >
-                            GitHub
-                        </a>
-                        <a
-                            href="https://tinyauth.app"
-                            target="_blank"
-                            class="italic underline hover:text-neutral-700 dark:hover:text-neutral-300"
-                        >
-                            Website
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <ProjectCard
+                title="Tinyauth"
+                description="The tiniest authentication and authorization server you have ever seen."
+                image="https://github.com/tinyauthapp/tinyauth/raw/main/assets/screenshot.png"
+                repo="https://github.com/tinyauthapp/tinyauth"
+                website="https://tinyauth.app"
+            />
         </div>
     </div>
 </Layout>
