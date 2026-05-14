@@ -87,19 +87,7 @@ posts.sort(
                 {
                     posts.slice(0, 2).map((post, i) => (
                         <>
-                            <PostCard
-                                title={post.data.title}
-                                description={post.data.description}
-                                slug={post.id}
-                                date={post.data.publishedOn.toLocaleDateString(
-                                    "en-US",
-                                    {
-                                        year: "numeric",
-                                        month: "long",
-                                        day: "numeric",
-                                    },
-                                )}
-                            />
+                            <PostCard post={post} />
                             {i != 1 && (
                                 <hr class="border-neutral-300 dark:border-neutral-800" />
                             )}

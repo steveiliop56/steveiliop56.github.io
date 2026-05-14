@@ -1,19 +1,32 @@
 ---
-const { title, description, slug, date } = Astro.props;
+const { post } = Astro.props;
+
+const words = post.body.split(" ");
+const readTime = Math.round(words.length / 200);
 ---
 
 <div>
     <div class="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
-        {date}
+        <span
+            >{
+                post.data.publishedOn.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                })
+            }</span
+        >
+        <span class="mx-1">&#x2022</span>
+        <span>{readTime} min read</span>
     </div>
     <h2 class="font-medium text-lg text-neutral-900 dark:text-neutral-200 mb-1">
-        {title}
+        {post.data.title}
     </h2>
-    <p>{description}</p>
+    <p>{post.data.description}</p>
     <a
-        href={`/posts/${slug}`}
+        href={`/posts/${post.id}`}
         class="italic underline text-sm mt-2 inline-block"
-        aria-label={`Read more about ${title}`}
+        aria-label={`Read more about ${post.data.title}`}
     >
         Read more
     </a>
