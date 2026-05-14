@@ -1,0 +1,27 @@
+---
+
+---
+
+<script>
+    const t =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+    document.documentElement.setAttribute("data-theme", t);
+    localStorage.setItem("theme", t);
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const mainElement = document.querySelector("main");
+
+        if (mainElement) {
+            mainElement.classList.add("transition-colors");
+        }
+    });
+</script>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stavros - @steveiliop56</title>
+    <meta name="description" content="My personal portfolio and blog." />
+</head>

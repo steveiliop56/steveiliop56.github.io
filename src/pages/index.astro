@@ -1,11 +1,144 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "@/layouts/base.astro";
+import { Icon } from "astro-icon/components";
+import PostCard from "@/components/post-card.astro";
+import { getCollection } from "astro:content";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const favoriteTechnologies = [
+    {
+        name: "Go",
+        icon: "material-icon-theme:go",
+    },
+    {
+        name: "Typescript",
+        icon: "material-icon-theme:typescript",
+    },
+    {
+        name: "React",
+        icon: "material-icon-theme:react",
+    },
+    {
+        name: "Zed",
+        icon: "devicon:zed",
+    },
+    {
+        name: "Docker",
+        icon: "devicon:docker",
+    },
+    {
+        name: "Kubernetes",
+        icon: "devicon:kubernetes",
+    },
+];
+
+const posts = await getCollection("blog");
+
+posts.sort(
+    (a, b) => b.data.publishedOn.getTime() - a.data.publishedOn.getTime(),
+);
 ---
 
 <Layout>
-	<Welcome />
+    <div class="p-8">
+        <div class="mb-8">
+            <h1
+                class="text-xl font-bold text-neutral-800 dark:text-neutral-300 mb-2"
+            >
+                About me
+            </h1>
+            <p class="text-neutral-800 dark:text-neutral-300 mb-2">
+                I am Stavros, you may have seen me around as <span
+                    class="font-medium text-neutral-900 dark:text-neutral-100"
+                    >@steveiliop56</span
+                >. I am a 16 year old software developer based in Greece. I am
+                interested in web development, self-hosting and open-source.
+            </p>
+        </div>
+        <div class="text-neutral-800 dark:text-neutral-300 mb-8">
+            <h1 class="text-xl font-bold mb-2">Favorite Technologies</h1>
+            <div class="mb-4">
+                I use quite a few technologies, but these are the ones I enjoy
+                working with the most.
+            </div>
+            <div class="grid grid-rows-3 grid-flow-col gap-4">
+                {
+                    favoriteTechnologies.map((tech) => (
+                        <div class="inline-flex flex-row gap-2 items-center">
+                            <Icon name={tech.icon} class="size-6" />
+                            <span class="font-medium">{tech.name}</span>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+        <div class="text-neutral-800 dark:text-neutral-300 mb-8">
+            <h1 class="text-xl font-bold mb-2">Latest from my Blog</h1>
+            <div class="mb-4">
+                I sometimes write about my projects, thoughts and experiences on
+                my blog.
+            </div>
+            <div class="grid grid-rows-1 gap-4 mb-4">
+                {
+                    posts.slice(0, 2).map((post, i) => (
+                        <>
+                            <PostCard
+                                title={post.data.title}
+                                description={post.data.description}
+                                slug={post.id}
+                                date={post.data.publishedOn.toLocaleDateString(
+                                    "en-US",
+                                    {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    },
+                                )}
+                            />
+                            {i != 1 && (
+                                <hr class="border-neutral-300 dark:border-neutral-800" />
+                            )}
+                        </>
+                    ))
+                }
+            </div>
+        </div>
+        <div class="text-neutral-800 dark:text-neutral-300">
+            <h1 class="text-xl font-bold mb-2">Featured Project</h1>
+            <div class="mb-4">I am currently working on...</div>
+            <div
+                class="rounded-lg border border-neutral-300 dark:border-neutral-800 overflow-hidden"
+            >
+                <img
+                    src="/tinyauth.png"
+                    alt="Tinyauth"
+                    class="rounded-t-lg border-b borded-b-neutral-300 dark:border-b-neutral-800"
+                />
+                <div class="p-4 rounded-b-lg">
+                    <div class="mb-2">
+                        <h2 class="font-bold text-md mb-2">Tinyauth</h2>
+                        <p>
+                            The tiniest authentication and authorization server
+                            you have ever seen.
+                        </p>
+                    </div>
+                    <div class="inline-flex flex-row gap-2">
+                        <a
+                            href="https://github.com/tinyauthapp/tinyauth"
+                            target="_blank"
+                            class="italic underline hover:text-neutral-700 dark:hover:text-neutral-300"
+                        >
+                            GitHub
+                        </a>
+                        <a
+                            href="https://tinyauth.app"
+                            target="_blank"
+                            class="italic underline hover:text-neutral-700 dark:hover:text-neutral-300"
+                        >
+                            Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </Layout>
