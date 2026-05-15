@@ -5,8 +5,6 @@ publishedOn: 2025-07-10T16:00:00+00:00
 author: Stavros
 ---
 
-# Extending LUKS volumes in Windows and Fedora dual boot
-
 Sometimes you have a setup where you firstly installed Windows and then some distribution like Fedora where you can opt-in for disk encryption using LUKS and a btrfs volume. This is amazing until you need to extend one of the operating system's partition, this where things get _tricky_. After spending a reasonable amount of time trying to make my own laptop work without losing any data I am confident I can share a guide on how you can do it too.
 
 ## Requirements
