@@ -1,5 +1,6 @@
 ---
-import { type CollectionEntry, getCollection, render } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/base.astro";
 
 export async function getStaticPaths() {
@@ -24,6 +25,115 @@ const words = post.body.split(" ");
 const readTime = Math.round(words.length / 200);
 ---
 
+<script>
+    // Credits to: https://github.com/giscus/giscus/issues/336#issuecomment-1214366281
+    function getGiscusTheme() {
+        if (document.documentElement.getAttribute("data-theme") === "dark") {
+            return "noborder_gray";
+        } else {
+            return "noborder_light";
+        }
+    }
+
+    function sendGiscusMessage<T>(message: T) {
+        const iframe = document.querySelector<HTMLIFrameElement>(
+            "iframe.giscus-frame",
+        );
+        if (!iframe || !iframe.contentWindow) return;
+        iframe.contentWindow.postMessage(
+            { giscus: message },
+            "https://giscus.app",
+        );
+    }
+
+    class AstroGiscus extends HTMLElement {
+        connectedCallback() {
+            const giscusScript = document.createElement("script");
+
+            const giscusAttributes = {
+                src: "https://giscus.app/client.js",
+                "data-repo": "steveiliop56/steveiliop56.github.io",
+                "data-repo-id": "R_kgDOMiZ-xg",
+                "data-category": "Comments",
+                "data-category-id": "DIC_kwDOMiZ-xs4Chz16",
+                "data-mapping": "pathname",
+                "data-strict": "0",
+                "data-reactions-enabled": "1",
+                "data-emit-metadata": "0",
+                "data-input-position": "bottom",
+                "data-theme": getGiscusTheme(),
+                "data-lang": "en",
+                "data-loading": "lazy",
+                crossorigin: "anonymous",
+                async: "true",
+            };
+
+            Object.entries(giscusAttributes).forEach(([key, value]) =>
+                giscusScript.setAttribute(key, value),
+            );
+
+            document.body.appendChild(giscusScript);
+
+            const lightBtn = document.getElementById("btn-theme-light");
+            const darkBtn = document.getElementById("btn-theme-dark");
+
+            if (lightBtn) {
+                lightBtn.addEventListener("click", () => {
+                    sendGiscusMessage({
+                        setConfig: {
+                            theme: "noborder_light",
+                        },
+                    });
+                });
+            }
+
+            if (darkBtn) {
+                darkBtn.addEventListener("click", () => {
+                    sendGiscusMessage({
+                        setConfig: {
+                            theme: "noborder_gray",
+                        },
+                    });
+                });
+            }
+        }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+        customElements.get("astro-giscus") ||
+            customElements.define("astro-giscus", AstroGiscus);
+
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        if (!scrollToTopBtn) return;
+
+        window.onscroll = function () {
+            handleScroll();
+        };
+
+        function handleScroll() {
+            if (
+                document.body.scrollTop > 20 ||
+                document.documentElement.scrollTop > 20
+            ) {
+                scrollToTopBtn?.classList.remove("hidden");
+            } else {
+                scrollToTopBtn?.classList.add("hidden");
+            }
+        }
+
+        function backToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            setTimeout(() => {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }, 500);
+        }
+
+        scrollToTopBtn?.addEventListener("click", backToTop);
+    });
+</script>
+
 <Layout>
     <div class="p-8">
         <div class="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
@@ -44,9 +154,18 @@ const readTime = Math.round(words.length / 200);
             {post.data.description}
         </div>
         <article
-            class="prose dark:prose-invert prose-headings:mb-2 prose-headings:mt-2 prose-h1:text-xl prose-h2:text-lg prose-h3:text-md prose-h4:text-base prose-h5:text-base prose-h6:text-base prose-code:wrap-break-word prose-a:wrap-break-word"
+            class="prose dark:prose-invert prose-headings:mb-2 prose-headings:mt-2 prose-h1:text-xl prose-h2:text-lg prose-h3:text-md prose-h4:text-base prose-h5:text-base prose-h6:text-base prose-code:wrap-break-word prose-a:wrap-break-word mb-4"
         >
             <Content />
         </article>
+        <button
+            class="hidden drop-shadow-sm bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-full transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:cursor-pointer p-4 fixed bottom-4 right-4"
+            id="scrollToTopBtn"
+            aria-label="Scroll to top"
+        >
+            <Icon name="tabler:caret-up-filled" class="m-auto" />
+        </button>
+        <astro-giscus></astro-giscus>
+        <div class="giscus"></div>
     </div>
 </Layout>
