@@ -67,8 +67,11 @@ posts.sort(
             <div class="grid grid-rows-3 grid-flow-col gap-4">
                 {
                     favoriteTechnologies.map((tech) => (
-                        <div class="inline-flex flex-row gap-2 items-center transition-all duration-100 hover:scale-105">
-                            <Icon name={tech.icon} class="size-6" />
+                        <div class="inline-flex flex-row gap-2 items-center">
+                            <Icon
+                                name={tech.icon}
+                                class="size-4 grayscale transition-all duration-100 hover:scale-110 hover:grayscale-0"
+                            />
                             <span class="font-medium">{tech.name}</span>
                         </div>
                     ))
