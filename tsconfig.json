@@ -1,6 +1,12 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "compilerOptions": { "allowSyntheticDefaultImports": true },
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+    },
+    "strictNullChecks": true,
+    "allowJs": true,
+  },
 }

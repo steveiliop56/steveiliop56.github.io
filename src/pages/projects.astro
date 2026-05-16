@@ -1,55 +1,65 @@
 ---
-import ProjectCard from "../components/ProjectCard.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Layout from "@/layouts/base.astro";
+import ProjectCard from "@/components/project-card.astro";
 
-interface Project {
-  name: string;
-  description: string;
-  repo: string;
-  language: string;
-  color: string;
-}
-
-const projects: Project[] = [
-  {
-    name: "Runtipi",
-    repo: "runtipi/runtipi",
-    description:
-      "Runtipi is a homeserver for everyone! One command setup, one click installs for your favorites self-hosted apps.",
-    language: "TypeScript",
-    color: "sky-800",
-  },
-  {
-    name: "Tinyauth",
-    repo: "steveiliop56/tinyauth",
-    description: "The simplest way to protect your apps with a login screen.",
-    language: "Go",
-    color: "sky-500",
-  },
-  {
-    name: "Spow",
-    repo: "steveiliop56/spow",
-    description:
-      "A simple and good looking (subjective) Spotify now playing screen.",
-    language: "Go",
-    color: "sky-500",
-  },
-  {
-    name: "Website",
-    repo: "steveiliop56/steveiliop56.github.io",
-    description: "My personal website.",
-    language: "Astro",
-    color: "orange-600",
-  },
+const projects = [
+    {
+        title: "Tinyauth",
+        description:
+            "The tiniest authentication and authorization server you have ever seen.",
+        image: "https://github.com/tinyauthapp/tinyauth/raw/main/assets/screenshot.png",
+        repo: "https://github.com/tinyauthapp/tinyauth",
+        website: "https://tinyauth.app",
+    },
+    {
+        title: "Runtipi",
+        description:
+            "Runtipi is a homeserver for everyone! One command setup, one click installs for your favorites self-hosted apps.",
+        image: "https://raw.githubusercontent.com/runtipi/runtipi/develop/screenshots/appstore.png",
+        repo: "https://github.com/runtipi/runtipi",
+        website: "https://runtipi.io",
+    },
+    {
+        title: "XPHTTPBridge",
+        description:
+            "A lightweight X-Plane 11 plugin written in Rust that exposes an HTTP API for reading and writing X-Plane DataRefs.",
+        repo: "https://github.com/steveiliop56/xphttpbridge",
+    },
+    {
+        title: "This Portfolio",
+        description: "The source code of this very portfolio website.",
+        repo: "https://github.com/steveiliop56/steveiliop56.github.io",
+    },
+    {
+        title: "Pi 5",
+        description:
+            "GitOps repository for my Raspberry Pi 5 Kubernetes cluster.",
+        repo: "https://github.com/steveiliop56/pi5",
+    },
 ];
 ---
 
-<BaseLayout title="Projects">
-  <div class="p-4 md:p-0 items-stretch">
-    <h2 class="text-3xl font-semibold">Projects</h2>
-    <p class="mt-2">Below are some of my favorite projects.</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-      {projects.map((project) => <ProjectCard {...project} />)}
+<Layout>
+    <div class="p-8">
+        <h1 class="font-bold text-lg mb-2">Projects</h1>
+        <div class="mb-8">
+            I have worked on many different projects throughout the years, but
+            below are my favorites.
+        </div>
+        <div class="grid grid-rows-1">
+            {
+                projects.map((project) => (
+                    <div class="mb-4">
+                        <ProjectCard
+                            title={project.title}
+                            description={project.description}
+                            image={project.image}
+                            repo={project.repo}
+                            website={project.website}
+                        />
+                    </div>
+                ))
+            }
+        </div>
     </div>
-  </div>
-</BaseLayout>
+</Layout>

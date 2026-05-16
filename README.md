@@ -1,5 +1,5 @@
-## Hello 👋
+# Hello 👋
 
-Welcome to my website's source code! Here are all the posts I write in markdown licensed under the GPL-3.0 license, which means you are free to copy whatever you want but it has to be open source and licensed under the same license.
+Welcome to my portfolio's source code! Everything is licensed under the MIT License, so feel free to use it as you wish. If you have any questions or suggestions, don't hesitate to reach out.
 
-Take a look at my website here: [https://doesmycode.work](https://doesmycode.work)
+Take a look at my website here: <https://doesmycodework.com>

@@ -1,60 +1,64 @@
 ---
-import { Icon } from "astro-icon/components";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Layout from "@/layouts/base.astro";
+import PostCard from "@/components/post-card.astro";
+import { getCollection } from "astro:content";
+import ProjectCard from "@/components/project-card.astro";
+
+const posts = await getCollection("blog");
+
+posts.sort(
+    (a, b) => b.data.publishedOn.getTime() - a.data.publishedOn.getTime(),
+);
 ---
 
-<script>
-  import { Typewriter } from "../lib/typewriter";
-
-  const words = [
-    "a full stack developer.",
-    "a raspberry pi enthusiast.",
-    "a reckless engineer.",
-    "a basketball lover.",
-  ];
-
-  const typewriterElement = document.getElementById("typewriter");
-  const typewriter = new Typewriter(words);
-
-  if (typewriterElement && !typewriter.hasElement) {
-    typewriter.setElement(typewriterElement);
-    typewriter.start();
-  }
-</script>
-
-<BaseLayout title="Home">
-  <img src="/profile.png" alt="Profile image" class="size-44 rounded-full" />
-  <div class="flex flex-col items-center text-center gap-1 mt-4">
-    <h2 class="text-xl font-semibold text-neutral-600 dark:text-neutral-400">
-      Hello, I'm
-    </h2>
-    <h2 class="text-4xl font-semibold">Stavros</h2>
-    <div>
-      <h2
-        class="text-2xl h-8 font-semibold text-neutral-600 dark:text-neutral-400 inline-block align-middle"
-        id="typewriter"
-      >
-      </h2>
-      <div
-        class="h-8 w-0.5 bg-neutral-700 dark:bg-neutral-300 animate-blink rounded-sm inline-block align-middle"
-      >
-      </div>
+<Layout>
+    <div class="p-8">
+        <div class="mb-8">
+            <h1
+                class="text-xl font-bold text-neutral-800 dark:text-neutral-300 mb-2"
+            >
+                About me
+            </h1>
+            <p class="text-neutral-800 dark:text-neutral-300 mb-4">
+                I am Stavros, you may have seen me around as <span
+                    class="font-medium text-neutral-900 dark:text-neutral-100"
+                    >@steveiliop56</span
+                >. I am a 16 year old software developer based in Greece. I am
+                interested in web development, self-hosting and open-source.
+            </p>
+            <div class="border-l-[0.25em] border-l-green-600 pl-2 py-[1em]">
+                If you are seeing this, then my code probably did work!
+            </div>
+        </div>
+        <div class="text-neutral-800 dark:text-neutral-300 mb-8">
+            <h1 class="text-xl font-bold mb-2">Latest from my Blog</h1>
+            <div class="mb-4">
+                I sometimes write about my projects, thoughts and experiences on
+                my blog.
+            </div>
+            <div class="grid grid-rows-1 gap-4 mb-4">
+                {
+                    posts.slice(0, 2).map((post, i) => (
+                        <>
+                            <PostCard post={post} border={false} />
+                            {i != 1 && (
+                                <hr class="border-neutral-300 dark:border-neutral-800" />
+                            )}
+                        </>
+                    ))
+                }
+            </div>
+        </div>
+        <div class="text-neutral-800 dark:text-neutral-300">
+            <h1 class="text-xl font-bold mb-2">Featured Project</h1>
+            <div class="mb-4">I am currently working on...</div>
+            <ProjectCard
+                title="Tinyauth"
+                description="The tiniest authentication and authorization server you have ever seen."
+                image="https://github.com/tinyauthapp/tinyauth/raw/main/assets/screenshot.png"
+                repo="https://github.com/tinyauthapp/tinyauth"
+                website="https://tinyauth.app"
+            />
+        </div>
     </div>
-  </div>
-  <div class="mt-4 flex flex-row gap-2">
-    <a href="https://github.com/steveiliop56">
-      <div
-        class="border border-neutral-200 dark:border-neutral-800 rounded-full p-2 hover:opacity-80"
-      >
-        <Icon name="tabler:brand-github" aria-label="Github" class="size-6" />
-      </div>
-    </a>
-    <a href="mailto:steve@doesmycode.work">
-      <div
-        class="border border-neutral-200 dark:border-neutral-800 rounded-full p-2 hover:opacity-80"
-      >
-        <Icon name="tabler:mail" aria-label="Email" class="size-6" />
-      </div>
-    </a>
-  </div>
-</BaseLayout>
+</Layout>
