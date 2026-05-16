@@ -9,7 +9,7 @@ export async function getStaticPaths() {
     );
 
     return posts.map((post) => ({
-        params: { id: post.id.replace(/\.md?$/, "") },
+        params: { id: post.id },
         props: post,
     }));
 }
@@ -166,6 +166,6 @@ const readTime = Math.round(words.length / 200);
             <Icon name="tabler:caret-up-filled" class="m-auto" />
         </button>
         <astro-giscus></astro-giscus>
-        <div class="giscus"></div>
+        <div class="giscus" id="comments"></div>
     </div>
 </Layout>
