@@ -67,7 +67,7 @@ posts.sort(
             <div class="grid grid-rows-3 grid-flow-col gap-4">
                 {
                     favoriteTechnologies.map((tech) => (
-                        <div class="inline-flex flex-row gap-2 items-center">
+                        <div class="inline-flex flex-row gap-2 items-center transition-all duration-100 hover:scale-105">
                             <Icon name={tech.icon} class="size-6" />
                             <span class="font-medium">{tech.name}</span>
                         </div>
@@ -85,7 +85,7 @@ posts.sort(
                 {
                     posts.slice(0, 2).map((post, i) => (
                         <>
-                            <PostCard post={post} />
+                            <PostCard post={post} border={false} />
                             {i != 1 && (
                                 <hr class="border-neutral-300 dark:border-neutral-800" />
                             )}

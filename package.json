@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.3.1",
     "astro-icon": "^1.1.5",
+    "clsx": "^2.1.1",
     "remark-github-blockquote-alert": "^2.1.0",
     "tailwindcss": "^4.3.0"
   },

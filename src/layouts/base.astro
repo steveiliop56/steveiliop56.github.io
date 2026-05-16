@@ -5,12 +5,14 @@ import Header from "@/components/header.astro";
 import Footer from "@/components/footer.astro";
 ---
 
-<Head />
+<html lang="en">
+    <Head />
 
-<main
-    class="min-h-dvh flex flex-col dark:bg-neutral-900 bg-neutral-100 text-neutral-800 dark:text-neutral-300"
->
-    <Header />
-    <div class="flex-1 md:max-w-2xl md:mx-auto"><slot /></div>
-    <Footer />
-</main>
+    <main
+        class="min-h-dvh flex flex-col dark:bg-neutral-900 bg-neutral-100 text-neutral-800 dark:text-neutral-300"
+    >
+        <Header />
+        <div class="flex-1 md:max-w-2xl md:mx-auto"><slot /></div>
+        <Footer />
+    </main>
+</html>
