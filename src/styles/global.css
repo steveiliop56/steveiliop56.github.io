@@ -1,0 +1,13 @@
+@import "remark-github-blockquote-alert/alert.css";
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant light (&:where([data-theme=light], [data-theme=light] *));
+
+:root {
+    &[data-theme="dark"] {
+        color-scheme: dark;
+    }
+}

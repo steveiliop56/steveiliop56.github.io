@@ -1,0 +1,34 @@
+---
+
+---
+
+<script>
+    const t =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+    document.documentElement.setAttribute("data-theme", t);
+    localStorage.setItem("theme", t);
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const mainElement = document.querySelector("main");
+
+        if (mainElement) {
+            mainElement.classList.add("transition-colors");
+        }
+    });
+</script>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <script
+        defer
+        src="https://analytics.doesmycode.work/script.js"
+        data-website-id="1940b296-a8c6-4663-bcb0-0ee20a0b7c97"></script>
+    <title>Stavros - @steveiliop56</title>
+    <meta name="description" content="My personal portfolio and blog." />
+</head>

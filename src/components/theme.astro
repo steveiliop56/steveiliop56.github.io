@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<script>
+    const documentElement = document.documentElement;
+    const btnDark = document.getElementById("btn-theme-dark");
+    const btnLight = document.getElementById("btn-theme-light");
+
+    if (!btnDark || !btnLight) {
+        throw new Error("Theme buttons not found in the DOM");
+    }
+
+    btnDark.addEventListener("click", () => {
+        documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+    });
+
+    btnLight.addEventListener("click", () => {
+        documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+    });
+</script>
+
+<div class="min-w-4 flex items-center">
+    <button
+        id="btn-theme-dark"
+        class="dark:hidden cursor-pointer hover:opacity-80"
+        aria-label="Dark mode"
+    >
+        <Icon name="tabler:moon-filled" class="size-4" />
+    </button>
+
+    <button
+        id="btn-theme-light"
+        class="light:hidden cursor-pointer hover:opacity-90"
+        aria-label="Light mode"
+    >
+        <Icon name="tabler:sun-filled" class="size-4" />
+    </button>
+</div>
