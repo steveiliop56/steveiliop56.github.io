@@ -1,5 +1,5 @@
 ---
-title: "Hugo vs Jekyll vs Ghost what should you chose?"
+title: "Hugo vs Jekyll vs Ghost what should you choose?"
 description: "There are a lot of blog-building engines and frameworks out there but what should you choose?"
 publishedOn: 2024-09-09T16:57:00+00:00
 author: Stavros
@@ -35,7 +35,7 @@ As I mentioned above Ghost was my first blogging platform, it's really a full bl
 
 ## Hugo
 
-Hugo is what powers my current website, it is very expensive but of course it has its drawbacks too.
+Hugo is what powers my current website, it is very extensive but of course it has its drawbacks too.
 
 #### Pros
 

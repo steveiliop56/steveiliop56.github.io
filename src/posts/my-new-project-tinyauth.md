@@ -15,7 +15,7 @@ I always wanted some simple authentication for my apps, of course, there is Auth
 
 ## Understanding how forward auth works
 
-At start forward auth seemed really simple, the basic idea is that the user makes a request to some app, then instead of immediately forwarding the request to the app, the proxy asks the forward auth middleware and expects either a 200 to allow the flow to continue or 400 to block access, traefik and caddy also support a 302 status message to immediately redirect the user to the app. This should be really simple right? Well, not really, it took me some time to figure out how to correctly redirect the user to the login page and back but I eventually figured it out and authentication became easy. Since the app is stateless, everything is handled client side, this means that when the user logins the Gin sessions middleware generates a small cookie containing the user email and an expiration date that’s later send to the client. This unfortunately doesn’t allow the server to invalidate a session but it is the best possible login method that doesn’t require storage which I don’t really want to implement in the app.
+At start forward auth seemed really simple, the basic idea is that the user makes a request to some app, then instead of immediately forwarding the request to the app, the proxy asks the forward auth middleware and expects either a 200 to allow the flow to continue or 400 to block access, traefik and caddy also support a 302 status message to immediately redirect the user to the app. This should be really simple right? Well, not really, it took me some time to figure out how to correctly redirect the user to the login page and back but I eventually figured it out and authentication became easy. Since the app is stateless, everything is handled client side, this means that when the user logins the Gin sessions middleware generates a small cookie containing the user email and an expiration date that’s later sent to the client. This unfortunately doesn’t allow the server to invalidate a session but it is the best possible login method that doesn’t require storage which I don’t really want to implement in the app.
 
 ## OAuth is easy
 
@@ -23,7 +23,7 @@ I initially thought that it would be super hard to implement but after making a 
 
 ## Documentation
 
-Documentation was undoubtably the hardest part of this project, I needed to write multiple guides for the different OAuth providers and when dealing with the 50 different screens of Google, documentation quickly becomes a huge pain. Additionally I needed to make sure my documentation is up to date with all the changes I was doing to the configuration and all of the new features I was adding. But, with the help of the awesome framework vitepress, I managed to spin up a beautiful documentation site that’s fast and integrates with the Github CI/CD so I can just commit and everything gets deployed automatically.
+Documentation was undoubtedly the hardest part of this project, I needed to write multiple guides for the different OAuth providers and when dealing with the 50 different screens of Google, documentation quickly becomes a huge pain. Additionally I needed to make sure my documentation is up to date with all the changes I was doing to the configuration and all of the new features I was adding. But, with the help of the awesome framework vitepress, I managed to spin up a beautiful documentation site that’s fast and integrates with the Github CI/CD so I can just commit and everything gets deployed automatically.
 
 ## Conclusion
 

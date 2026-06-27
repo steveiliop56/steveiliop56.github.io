@@ -82,7 +82,7 @@ Umbrel offers:
 
 Runtipi offers:
 
-- Builtin Traefik that exposes your apps security with the HTTP/DNS challenge
+- Builtin Traefik that exposes your apps securely with the HTTP/DNS challenge
 - External links in the dashboard
 - Guest dashboard for sharing apps without being authenticated
 - Log viewer for both apps and Runtipi itself

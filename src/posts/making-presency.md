@@ -1,6 +1,6 @@
 ---
 title: "Making presency"
-description: "I made presency, a simple why to customize the Discord Rich Presence because...why not?"
+description: "I made presency, a simple way to customize the Discord Rich Presence because...why not?"
 publishedOn: 2024-10-12T15:23:00+00:00
 author: Stavros
 ---

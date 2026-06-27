@@ -1,6 +1,6 @@
 ---
 title: "How to get Let's Encrypt SSL certificates with Nginx Proxy Manager"
-description: "Getting Let's Ecnrypt SSL certificates is this easy with this tool!"
+description: "Getting Let's Encrypt SSL certificates is this easy with this tool!"
 publishedOn: 2024-10-01T16:34:00+00:00
 author: Stavros
 ---
@@ -17,7 +17,7 @@ In order to follow this tutorial you need the following things:
 
 ## Setting up the DNS records
 
-Firstly we need to setup the DNS records of our domain to point to the IP address of our server. This is quite different for every domain registar so you will have to do a quick google search on how to add DNS records to your domain. After you find out how you need to add these 2 records:
+Firstly we need to setup the DNS records of our domain to point to the IP address of our server. This is quite different for every domain registrar so you will have to do a quick google search on how to add DNS records to your domain. After you find out how you need to add these 2 records:
 
 - `domain.com` pointing to `your-server-internal-ip` as an A record
 - `*.domain.com` pointing to `your-server-internal-ip` as an A record
@@ -27,11 +27,11 @@ Firstly we need to setup the DNS records of our domain to point to the IP addres
 
 ## Obtaining an API token
 
-Now we need to get our API token, again this is different for every domain registar but a quick google search on how to get an API token should do the trick. For registars like Cloudflare where you can select a template make sure to select the `DNS Edit` template as it will make everything easier.
+Now we need to get our API token, again this is different for every domain registrar but a quick google search on how to get an API token should do the trick. For registrars like Cloudflare where you can select a template make sure to select the `DNS Edit` template as it will make everything easier.
 
 ## Setting up Nginx Proxy Manager
 
-Setting un Nginx Proxy Manager (which I will refer to as npm) is relatively easy since it is only a docker container. So make sure you have docker and docker compose installed on your server. When you are done create an `nginx-proxy-manager` directory and inside create a `data` directory, this folder will contain your npm data. Now create a `docker-compose.yml` file with the following content:
+Setting up Nginx Proxy Manager (which I will refer to as npm) is relatively easy since it is only a docker container. So make sure you have docker and docker compose installed on your server. When you are done create an `nginx-proxy-manager` directory and inside create a `data` directory, this folder will contain your npm data. Now create a `docker-compose.yml` file with the following content:
 
 ```yaml
 services:
@@ -55,7 +55,7 @@ Now you can simply do `docker compose up -d` and after a minute or so npm should
 
 ## Generating the SSL certificates
 
-Everything is now ready for us to generate our certificates, so spin up your npm dashboard and go to the SSL Certificates tab. There click the Add Certificate button and select Let’s Encrypt. In the menu that pops up add `domain.com` and `*.domain.com` in the Domain Names section (or a subdomain if you used that). After this fill in your email address and flip both the Use DNS Challenge and the I Agree to the Let’s Encrypt Terms of Service switches. When you flip them an extra menu will appear prompting you to chose your domain registar. After you select your option, a textbox will appear where you should fill in your API token (your email address may be required too for some providers). When you are done click Save and then npm will start generating the certificates, there is a chance it fails the first time but don’t worry, just click Save again and it should generate them. When it’s done a new entry should appear in the SSL Certificates table with your domain and that’s it, your certificates are now generated!
+Everything is now ready for us to generate our certificates, so spin up your npm dashboard and go to the SSL Certificates tab. There click the Add Certificate button and select Let’s Encrypt. In the menu that pops up add `domain.com` and `*.domain.com` in the Domain Names section (or a subdomain if you used that). After this fill in your email address and flip both the Use DNS Challenge and the I Agree to the Let’s Encrypt Terms of Service switches. When you flip them an extra menu will appear prompting you to choose your domain registrar. After you select your option, a textbox will appear where you should fill in your API token (your email address may be required too for some providers). When you are done click Save and then npm will start generating the certificates, there is a chance it fails the first time but don’t worry, just click Save again and it should generate them. When it’s done a new entry should appear in the SSL Certificates table with your domain and that’s it, your certificates are now generated!
 
 ## Adding your first service
 
@@ -63,4 +63,4 @@ Adding services is really easy, just click the Hosts button and select Proxy Hos
 
 ## Conclusion
 
-All in all generating certificates with npm it really easy and I believe that a lot of people aren’t using it thinking it’s complex but with apps like npm, SSL has became easy. Another reason people aren’t using SSL is because they think they need to buy a domain but in reality you can just use DuckDNS and get your own free subdomain. That’s it for now, see ya!
+All in all generating certificates with npm is really easy and I believe that a lot of people aren’t using it thinking it’s complex but with apps like npm, SSL has become easy. Another reason people aren’t using SSL is because they think they need to buy a domain but in reality you can just use DuckDNS and get your own free subdomain. That’s it for now, see ya!

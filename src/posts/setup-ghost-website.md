@@ -76,7 +76,7 @@ After you make your changes you can start ghost with the command `docker compose
 
 ## Setting up watch tower
 
-Since we want to handle updates automatically we can can use watchtower to automatically update our docker containers to the latest version. The watchtower compose file is very simple and you don't need to modify anything.
+Since we want to handle updates automatically we can use watchtower to automatically update our docker containers to the latest version. The watchtower compose file is very simple and you don't need to modify anything.
 
 ```yaml
 version: "3.9"

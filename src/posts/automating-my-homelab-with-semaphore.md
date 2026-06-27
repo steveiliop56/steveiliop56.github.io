@@ -68,7 +68,7 @@ So now we are ready to launch! `docker compose up -d` and Semaphore should be li
 
 ## Configuration
 
-Now its time to do some basic configuration to semaphore, the initial setup. When you visit Semaphore for the first tune it will ask you to sign in and create a project, I named mine `homelab`, when you finish you should be presented with the Semaphore UI.
+Now it's time to do some basic configuration to semaphore, the initial setup. When you visit Semaphore for the first time it will ask you to sign in and create a project, I named mine `homelab`, when you finish you should be presented with the Semaphore UI.
 
 Firstly I set up my ssh credentials, this is very easy to do just click on the Key Store tab and add your ssh keys or login credentials. After that I added my inventory files, again head over to the Inventory tab and add all your inventory files, when you add a new inventory you have to specify your ssh credentials which we set up earlier. The inventory file is just like the ansible one so you can specify all the variables you are familiar with like `ansible_become_password` which I used a lot. Time for our repository, Semaphore works with git repositories by default but it allows you to use folders too, in the compose file I showed you above I added a `/repositories` bind volume where you can place your playbooks without the need to use git, I prefer this option because sometimes playbooks can include sensitive information like passwords and tokens. Additionally we need to set up the environment, that's very simple I simply created a new environment and added a new variable with key `ANSIBLE_HOST_KEY_CHECKING` and value `false` to disable host key checking else my playbooks would fail. Last but not least we need to create a task, a task is basically all of the above steps combined so the playbook can run, you simply need to go to the Tasks tab create a new task and fill in the values, all the important ones are dropdowns where you just select what you created from the previous steps.
 
@@ -76,7 +76,7 @@ When you are done you can click the task you just created and click run a termin
 
 ## My most used playbook
 
-I think its not hard to guess what my most used playbook is, it's of course the updating one. So I just created a dead simple ansible playbook:
+I think it's not hard to guess what my most used playbook is, it's of course the updating one. So I just created a dead simple ansible playbook:
 
 ```yaml
 - name: Update hosts

@@ -134,7 +134,7 @@ And reboot:
 
 `reboot`
 
-### Step 6
+### Step 5
 
 Now it is time to install `dnsmasq`, this service will host our TFTP directory containing our boot files. To install it run the following command:
 
@@ -175,7 +175,7 @@ pxe-service=0,"Raspberry Pi Boot"
 
 Make sure to replace `10.42.0.255` with your own network’s broadcast address. To get it, get your server’s IP from the previous step and replace the last part with 255. For example if your server’s IP is `192.168.1.2`, your broadcast address is `192.168.1.255`.
 
-### Step 7
+### Step 6
 
 Now it is time to set up our operating system. To do so we need to download the image with:
 
@@ -234,7 +234,7 @@ And restart `dnsmasq` :
 
 `systemctl restart dnsmasq`
 
-### Step 8
+### Step 7
 
 Now it is time to install our NFS server, this can be done with:
 
@@ -255,7 +255,7 @@ Then we need to create our exports:
 `echo "/srv/nfs/pi4-1 *(rw,sync,no_subtree_check,no_root_squash)" | tee -a /etc/exports`
 
 > [!NOTE]
-> You can replace the asterisk (`*`) with the IP that your router gives to your pi so only this pi can access this filesystem. To get your pi’s IP, hook it up without an SD card to a monitor with an ethernet cable attached and look for `YI_ADDR`
+> You can replace the asterisk (`*`) with the IP that your router gives to your pi so only this pi can access this filesystem. To get your pi’s IP, hook it up without an SD card to a monitor with an ethernet cable attached and look for `PI_ADDR`
 
 Finally we need to restart all services to detect the new files:
 
@@ -266,7 +266,7 @@ systemctl enable nfs-kernel-server
 systemctl restart nfs-kernel-server
 ```
 
-### Step 9
+### Step 8
 
 Now we need to remove the unused mounts from our `fstab`, this can be done with:
 
@@ -280,7 +280,7 @@ Delete everything after `root` (including it) and add the following:
 
 `root=/dev/nfs nfsroot=your-ip:/srv/nfs/pi4-1,vers=3 rw ip=dhcp rootwait`
 
-And finally create out user account with:
+And finally create our user account with:
 
 `echo pi:$(openssl passwd -6 raspberry) > /srv/nfs/pi4-1/boot/userconf.txt`
 
@@ -298,7 +298,7 @@ Lastly I noticed that we need to fix some small permissions issues which can be 
 
 `chmod 4755 /srv/nfs/pi4-1/usr/bin/sudo`
 
-### Step 10
+### Step 9
 
 And we are done! Now you should be able to plug your raspberry pi in, with nothing but the power cable and an ethernet cable and it should automatically pick up the OS and boot!
 
