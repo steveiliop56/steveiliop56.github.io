@@ -1,5 +1,5 @@
 ---
-
+const { title, description } = Astro.props;
 ---
 
 <script>
@@ -27,8 +27,9 @@
     <link rel="sitemap" href="/sitemap-index.xml" />
     <script
         defer
+        is:inline
         src="https://analytics.doesmycode.work/script.js"
         data-website-id="1940b296-a8c6-4663-bcb0-0ee20a0b7c97"></script>
-    <title>Stavros - @steveiliop56</title>
-    <meta name="description" content="My personal portfolio and blog." />
+    <title>{title}</title>
+    <meta name="description" content={description} />
 </head>

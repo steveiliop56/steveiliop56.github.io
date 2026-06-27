@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const post = Astro.props;
-const { Content, headings } = await render(post);
+const { Content } = await render(post);
 
 if (!Content || !post.body) {
     throw new Error("Post content is missing");
@@ -134,7 +134,7 @@ const readTime = Math.round(words.length / 200);
     });
 </script>
 
-<Layout>
+<Layout title={post.data.title} description={post.data.description}>
     <div class="p-8">
         <div class="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
             <span
