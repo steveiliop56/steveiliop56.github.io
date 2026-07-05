@@ -28,7 +28,7 @@ Now for Tailscale, I trust that they are an honest company and that they would u
 First instinct was to let them know about it, so I shared the following messages in their new border0 channel:
 
 > 1. *form text quote* I get the marketing part but to be honest I would like for this to be a checkbox.
-> 2. 1. It's a bit...sneaky?
+> 2. It's a bit...sneaky?
 
 What I didn't expect was getting messaged by a moderator. The moderator instead of focusing on the feedback, focused on the word "sneaky" stating that it violates the Insider CoC and that it can reputational harm for Tailscale. I couldn't really believe what I was reading because...why would I want to cause any kind of damage to Tailscale? There are a lot of ways to make such a small issue a big fuss and actually cause reputational harm, but my message wasn't that.
 
